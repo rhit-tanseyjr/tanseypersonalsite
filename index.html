@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>John Tansey - Computer Engineering Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --dark-bg: #1a1a1a;
+            --card-bg: #2d2d2d;
+            --accent-blue: #00e1ff;
+            --accent-yellow: #fdf800;
+            /* CHANGE THIS TO MODIFY YELLOW COLOR */
+            --text-primary: #f0f0f0;
+            --text-secondary: #cccccc;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* body {
+            margin: 0;
+            background-color: var(--dark-bg);
+            color: var(--text-primary);
+            font-family: 'Share Tech Mono', monospace;
+            line-height: 1.5;
+            letter-spacing: 0.7px;
+            min-height: 100vh;
+            transition: opacity 0.8s ease;
+        }*/
+        body {
+            background:
+                linear-gradient(rgba(26, 26, 26, 0.85), rgba(26, 26, 26, 0.85)),
+                url('https://i.redd.it/mdvmefeejg331.jpg') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            color: var(--text-primary);
+            font-family: 'Share Tech Mono', monospace;
+            line-height: 1.5;
+            letter-spacing: 0.7px;
+            min-height: 100vh;
+            transition: opacity 0.8s ease;
+        }
+
+
+        body.loaded {
+            opacity: 1;
+        }
+
+        /* LOADING ANIMATION */
+        /*
+  #loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--dark-bg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+    transition: opacity 0.8s ease-out;
+  }
+  
+  .loader-content {
+    text-align: center;
+    width: 300px;
+  }
+  
+  .terminal-text {
+    color: var(--accent-yellow);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 0.15em solid var(--accent-yellow);
+    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+  }
+  
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+  
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: var(--accent-yellow) }
+  }
+  
+  .progress-text {
+    color: var(--accent-yellow);
+    font-family: 'Share Tech Mono', monospace;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+  
+  .progress-bar {
+    width: 100%;
+    height: 4px;
+    background: #444;
+    margin: 1rem auto;
+    overflow: hidden;
+    border-radius: 2px;
+  }
+  
+  .progress {
+    height: 100%;
+    width: 0;
+    background: var(--accent-yellow);
+    transition: width 0.3s ease;
+  }
+  
+  body.loaded #loader {
+    opacity: 0;
+    pointer-events: none;
+  }
+  */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--card-bg);
+            padding: 0.5rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 9999;
+            border-bottom: 1px solid var(--accent-yellow);
+        }
+
+        .header-left {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header-left h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .header-right a {
+            margin-left: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .header-right a:hover {
+            color: var(--accent-yellow);
+        }
+
+        .header-right svg {
+            width: 24px;
+            height: 24px;
+            vertical-align: middle;
+        }
+
+        a[href^="mailto:"] {
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        a[href^="mailto:"]:hover {
+            text-decoration: underline;
+        }
+
+        .header-right svg {
+            fill: #ffffff;
+        }
+
+        main {
+            margin-top: 90px;
+            padding: 1rem;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2.5rem;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+        }
+
+        @media (max-width: 900px) {
+            main {
+                display: block;
+                padding: 1rem;
+            }
+        }
+
+
+        section {
+            background-color: var(--card-bg);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border: 1px solid #444;
+        }
+
+        h1,
+        h2,
+        h3 {
+            margin-top: 0;
+            color: var(--accent-yellow);
+            /* Yellow acc */
+        }
+
+        section h2::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: var(--accent-yellow);
+            margin-top: 0.5rem;
+        }
+
+        /* SKILLS LIST */
+        .skills-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 0.7rem 1.5rem;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .skills-list li {
+            background: #3d3d3d;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-align: center;
+            border: 1px solid #555;
+        }
+
+        /* PROJECT/JOB STYLES */
+        .job,
+        .project {
+            margin-bottom: 0.5rem;
+            background: #3d3d3d;
+            border-radius: 6px;
+            padding: 0.5rem;
+            border-left: 3px solid var(--accent-yellow);
+            /* Yellow accent */
+            border: 1px solid #555;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .job-title,
+        .project-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--accent-yellow);
+            /* Yellow titles */
+            margin-bottom: 0.3rem;
+        }
+
+        .company {
+            font-style: italic;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .date {
+            color: #999;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .description {
+            margin: 0;
+            white-space: pre-line;
+            font-size: 0.95rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                margin-top 0.3s ease;
+            will-change: max-height;
+        }
+
+        .project.active .description {
+            max-height: 500px;
+            margin-top: 0.5rem;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                margin-top 0.3s ease;
+        }
+
+        .toggle-icon {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .toggle-icon {
+            transition: transform 0.3s ease;
+            color: var(--accent-yellow);
+        }
+
+        .project.active .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .job .description {
+            margin: 0;
+            white-space: pre-line;
+            font-size: 0.95rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: max-height;
+        }
+
+        .job.active .description {
+            max-height: 500px;
+            margin-top: 0.5rem;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .job .toggle-icon {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            color: var(--accent-yellow);
+        }
+
+        .job.active .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        /* FOOTER */
+        footer {
+            grid-column: 1 / -1;
+            text-align: center;
+            margin-top: 3rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            padding: 1rem;
+            border-top: 1px solid rgba(253, 248, 0, 0.3);
+            /* Yellow accent */
+        }
+
+        /* RESPONSIVE ADJUSTMENTS */
+        @media (max-width: 600px) {
+            .skills-list {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Loading Animation -->
+    <!--
+<div id="loader">
+  <div class="loader-content">
+    <div class="terminal-text">Initializing Portfolio...</div>
+    <div class="progress-text">Indexing: <span id="progress-percent">0</span>%</div>
+    <div class="progress-bar">
+      <div class="progress" id="progress-bar"></div>
+    </div>
+  </div>
+</div>
+-->
+
+    <header>
+        <div class="header-left" role="banner">
+            <h1>John Tansey</h1>
+        </div>
+        <div class="header-right">
+            <a href="https://linkedin.com/in/john-r-tansey" target="_blank" aria-label="LinkedIn Profile"
+                rel="noopener noreferrer">
+                <svg role="img" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.08 8h5.15v12H.08V8zm7.41 0h4.94v1.7h.07c.69-1.3 2.38-2.67 4.89-2.67 5.23 0 6.2 3.43 6.2 7.9V20H17v-6.12c0-1.46-.03-3.33-2.03-3.33-2.03 0-2.34 1.59-2.34 3.23V20H7.49V8z" />
+                </svg>
+            </a>
+            <a href="https://github.com/rhit-tanseyjr" target="_blank" aria-label="GitHub Profile"
+                rel="noopener noreferrer">
+                <svg role="img" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.79 8.21 11.38.6.11.82-.26.82-.58v-2.2c-3.34.73-4.04-1.61-4.04-1.61-.54-1.37-1.33-1.74-1.33-1.74-1.09-.75.08-.74.08-.74 1.2.08 1.83 1.23 1.83 1.23 1.07 1.83 2.81 1.3 3.5.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.96 0-1.32.47-2.39 1.23-3.23-.12-.3-.54-1.52.11-3.16 0 0 1-.32 3.3 1.23a11.45 11.45 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.65 1.64.23 2.86.12 3.16.77.84 1.23 1.91 1.23 3.23 0 4.63-2.8 5.66-5.48 5.96.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.83.58A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+                </svg>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <div class="left-column">
+            <section id="about-me" aria-label="About Me">
+                <h2>About Me</h2>
+                <p>Third Year Computer Engineering student at Rose-Hulman Institute of Technology seeking an internship
+                    for Summer 2026.</p>
+            </section>
+
+            <section id="contact-me" aria-label="Contact Me">
+                <h2>Contact Me</h2>
+                <p>Email: <a href="mailto:tanseyjr@rose-hulman.edu">tanseyjr@rose-hulman.edu</a></p>
+                <p>Phone: (608) 695-4271</p>
+            </section>
+
+            <section id="skills" aria-label="Skills">
+                <h2>Skills</h2>
+                <ul class="skills-list" aria-label="Technical skills list">
+                    <li>Git, CVS</li>
+                    <li>Jira, Monday</li>
+                    <li>Linux (RHEL, Ubuntu)</li>
+                    <li>TempleOS</li>
+                    <li>C++</li>
+                    <li>C</li>
+                    <li>C#</li>
+                    <li>Verilog</li>
+                    <li>Assembly (RISC-V, ARM Thumb II)</li>
+                    <li>Bash</li>
+                    <li>Java</li>
+                    <li>Python</li>
+                    <li>SQL</li>
+                    <li>MATLAB</li>
+                    <li>HolyC</li>
+                    <li>CUDA</li>
+                    <li>JSON</li>
+                    <li>Markdown</li>
+                    <li>Eclipse, ModelSim, VS Code, Vim</li>
+                    <li>Simulink</li>
+                    <li>Embedded Systems</li>
+                    <li>Project Management (SDLC)</li>
+                    <li>Signal Processing</li>
+                    <li>PCB Design, Circuit Simulation</li>
+                    <li>Semiconductor Simulation Software</li>
+                    <li>Computer Architecture</li>
+                    
+
+                </ul>
+            </section>
+        </div>
+
+        <div class="right-column">
+            <section id="project-experience" aria-label="Project Experience">
+                <h2>Project Experience</h2>
+
+                <div class="project">
+                    <div class="project-header">
+                        <div>
+                            <p class="project-title">Rad hard semicond sys</p>
+                            <p class="date">dates</p>
+                        </div>
+                        <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <p class="description">
+                        • stuff i did
+                    </p>
+                </div>
+
+                <div class="project">
+                    <div class="project-header">
+                        <div>
+                            <p class="project-title">Battery Management Systems</p>
+                            <p class="date">Aug 2024 – Jan 2025</p>
+                        </div>
+                        <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <p class="description">
+
+                        • Worked under the Battery Management System team for the Rose-Hulman Battery Workforce
+                        Challenge team.
+                        • Worked with Simulink, coded controls and response for electric vehicle pre-charging and
+                        crash detection
+                        • Utilized serial communication with microcontrollers
+                        • <a href="https://avtcseries.org/about-the-battery-workforce-challenge/" target="_blank"
+                            rel="noopener noreferrer" class="more-info-link">More Info</a>
+                    </p>
+                </div>
+
+                <div class="project">
+                    <div class="project-header">
+                        <div>
+                            <p class="project-title">Pipelined RISC-V Processor</p>
+                            <p class="date">Dec 2024 – Feb 2025</p>
+                        </div>
+                        <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <p class="description">
+                        • Implemented a RISC-V processor in Verilog, evolving from single-cycle to pipelined
+                        architecture
+                        • Added branch/jump handling with decode-stage detection and pipeline flushing
+                        • Designed and integrated stall detection and data forwarding units to resolve hazards
+                        • Verified correctness with custom testbenches and benchmarked
+                        <code>gcd</code>/<code>relPrime</code> programs
+                        • Created and integrated a custom <code>gcd</code> instruction, eliminating branching and loops
+                        by computing directly in hardware
+                        • Reduced relPrime runtime from 172 → 58 cycles (n=6), 51,151 → 124 cycles (n=5040), and 366,757
+                        → 200 cycles (n=30030)
+                        • Achieved extreme scalability: estimated reduction from ~3.98×10<sup>12</sup> → 317 cycles for
+                        n=223,092,870 (most difficult relative prime number testable on the register size)
+                        • Demonstrated speedups exceeding <strong>10<sup>10</sup>×</strong> while improving readability,
+                        predictability, and hardware efficiency
+                        • <a href="https://github.com/rhit-csse232/rhit-csse232-2425b-pipe-tulip-2425b-pipe-02"
+                            target="_blank" rel="noopener noreferrer" class="more-info-link">View GitHub Repository↗</a>
+                    </p>
+                </div>
+
+
+                <div class="project">
+                    <div class="project-header">
+                        <div>
+                            <p class="project-title">Infrared-Seeking Missile Control System (Project Leader)</p>
+                            <p class="date">Jan 2025 – Feb 2025</p>
+                        </div>
+                        <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <p class="description">
+                        • Developed real-time infrared tracking missile prototype using MSP432 microcontroller with
+                        autonomous target acquisition
+                        • Designed servo-controlled guidance system with 4 independent fins achieving sub 100ms response
+                        time and 5% angle accuracy
+                        • Implemented state machine logic (Base→Armed→Fire) with audio/visual feedback and
+                        proximity-based detonation
+                        • Optimized IR signal processing with rotating optical assembly (stepper motor + photodiode +
+                        concave mirror)
+                        • Achieved warhead trigger latency of 130μs and ignition response within 1ms through
+                        hardware-software co-design
+                        • Integrated serial communication interface and backup button redundancy for robust control
+                        • <a href="https://github.com/rhit-tanseyjr/ECE-230-Final-Project" target="_blank"
+                            rel="noopener noreferrer" class="more-info-link">View GitHub Repository↗</a>
+                    </p>
+                </div>
+
+                <div class="project">
+                    <div class="project-header">
+                        <div>
+                            <p class="project-title">Genetic Algorithm Research (Project Leader)</p>
+                            <p class="date">Aug 2023 – Nov 2023</p>
+                        </div>
+                        <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <p class="description">
+                        • Led development of evolutionary simulator implementing genetic algorithms
+                        • Designed and implemented chromosome visualization/editor with mutation, crossover, and
+                        selection mechanisms
+                        • Developed multiple fitness functions (bit counting, target matching, consecutive 1s) and
+                        selection algorithms
+                        • Created GUI-based evolution simulator with real-time population visualization and statistical
+                        analysis
+                        • Implemented truncation, roulette wheel, and ranked selection methods with comparative
+                        performance analysis
+                        • Conducted experiments demonstrating genetic algorithm behavior across different parameter
+                        configurations
+                        • Successfully reproduced results from <a
+                            href="https://pages.ucsd.edu/~rbelew/courses/cogs184_w10/readings/HintonNowlan97.pdf"
+                            target="_blank" rel="noopener noreferrer">"How Learning Can Guide Evolution"</a> scientific
+                        paper
+                        • Utilized object-oriented design principles with inheritance for selection methods and
+                        interfaces for fitness functions
+                        • <a href="https://github.com/rhit-csse220/csse220-fall-2024-2025-final-project-f24_r203"
+                            target="_blank" rel="noopener noreferrer" class="more-info-link">View Project Details ↗</a>
+                    </p>
+                </div>
+            </section>
+
+            <section id="work-experience" aria-label="Work Experience">
+                <h2>Work Experience</h2>
+                <div class="job">
+                    <div class="job-header">
+                        <div>
+                            <p class="job-title">Intern</p>
+                            <p class="company">JRC Integrated Systems, Crane, IN</p>
+                            <p class="date">May 2025 – Aug 2025</p>
+                        </div>
+                        <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <p class="description">
+                        • Software work on radiation hardened electronics simulation and parallelization
+                        • Semiconductors, Argonne linear solver addition, CUDA, server-side optimizations
+                    </p>
+                </div>
+                <div class="job">
+                    <div class="job-header">
+                        <div>
+                            <p class="job-title">Software Engineering Intern</p>
+                            <p class="company">YolBe, Chicago, IL</p>
+                            <p class="date">May 2024 - Aug 2024</p>
+                        </div>
+                        <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <p class="description">
+                        • Tested and fixed bugs, coded SQL queries to analyze user activity
+                        • Constructed dashboards and analytical reports using Redash and Mixpanel
+                        • Engineered prompts for company AI
+                        • Performed analysis on analytics and user engagement
+                    </p>
+                </div>
+            </section>
+            <section id="more-info-section" aria-label="More Info">
+                <h2>More Info</h2>
+                <p><strong>Education:</strong> Bachelor of Science, Computer Engineering, Rose-Hulman Institute of
+                    Technology (Expected May 2027)</p>
+                <p></p> GPA 3.48/4.0</p>
+                <p>3x Dean's List </p>
+                <p><strong>Relevant Courses:</strong>Programming Language Concepts, Embedded Systems, Operating Systems, Computer
+                    Architecture, AC Circuits, Digital Systems, Signal Processing, OOP, Data Structures & Algorithms,
+                    Signals and Systems</p>
+                <section id="campus-experience" aria-label="Campus Experience">
+                    <h2>Campus Experience</h2>
+                    <div class="campus-activity">
+                        <div class="campus-header">
+                            <div>
+                                <p class="campus-title">USLI Rocketry Team (NASA Student Launch Initiative)</p>
+                                <p class="date">Mar 2025 – Present</p>
+                            </div>
+                            <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                        <p class="description">
+                            • Member of Rose-Hulman's NASA Student Launch Initiative team designing and building
+                            high-power rockets
+                            • Contribute to avionics and flight computer systems development
+                            • Participate in system integration and pre-launch testing procedures
+                            • Work on payload design meeting NASA mission requirements
+                            • Prepare documentation and reports for NASA design reviews
+                        </p>
+                    </div>
+                    <div class="campus-activity">
+                        <div class="campus-header">
+                            <div>
+                                <p class="campus-title">Rose Competitive Programming Team</p>
+                                <p class="date">Sept 2024 – Present</p>
+                            </div>
+                            <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                        <p class="description">
+                            • Member of Rose-Hulman's competitive programming team competing in ICPC and other
+                            programming contests
+                            • Regularly practice algorithm problems and participate in team coding competitions
+                            • Focus on developing efficient solutions to complex computational problems under time
+                            constraints
+                            • Collaborated with teammates to solve problems using data structures and advanced algorithms
+                        </p>
+                    </div>
+
+                    <div class="campus-activity">
+                        <div class="campus-header">
+                            <div>
+                                <p class="campus-title">Battery Workforce Challenge</p>
+                                <p class="date">Mar 2024 – Mar 2025</p>
+                            </div>
+                            <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                        <p class="description">
+                            • Worked under the Battery Management System team for the Rose-Hulman Battery Workforce
+                            Challenge team
+                            • Developed controls and response systems for electric vehicle pre-charging and crash
+                            detection using Simulink
+                            • Implemented serial communication protocols with microcontrollers for battery monitoring
+                            • Collaborated with mechanical and electrical engineering students on integrated system
+                            design
+                            • <a href="https://avtcseries.org/about-the-battery-workforce-challenge/" target="_blank"
+                                rel="noopener noreferrer" class="more-info-link">More Info</a>
+                        </p>
+                    </div>
+
+                    <div class="campus-activity">
+                        <div class="campus-header">
+                            <div>
+                                <p class="campus-title">ESCALATE Student Entrepreneur Program</p>
+                                <p class="date">Aug 2023 – Present</p>
+                            </div>
+                            <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                        <p class="description">
+                            • Participate in entrepreneurship program focused on technology commercialization
+                            • Develop business plans and pitch ideas for innovative tech solutions
+                            • Collaborate with students from diverse disciplines to create viable product concepts
+                            • Attend workshops on intellectual property, market analysis, and venture funding
+                            • Network with industry professionals and successful entrepreneurs
+                        </p>
+                    </div>
+
+
+                </section>
+            </section>
+
+
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2025 John Tansey
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // campus activities
+            const campusActivities = document.querySelectorAll('.campus-activity');
+            campusActivities.forEach(activity => {
+                const header = activity.querySelector('.campus-header');
+                const description = activity.querySelector('.description');
+
+                header.addEventListener('click', () => {
+                    activity.classList.toggle('active');
+                    if (activity.classList.contains('active')) {
+                        description.style.maxHeight = description.scrollHeight + 'px';
+                    } else {
+                        description.style.maxHeight = '0';
+                    }
+                });
+            });
+            // projects
+            const projects = document.querySelectorAll('.project');
+            projects.forEach(project => {
+                const header = project.querySelector('.project-header');
+                const description = project.querySelector('.description');
+
+                header.addEventListener('click', () => {
+                    project.classList.toggle('active');
+                    if (project.classList.contains('active')) {
+                        description.style.maxHeight = description.scrollHeight + 'px';
+                    } else {
+                        description.style.maxHeight = '0';
+                    }
+                });
+            });
+
+            // jobs
+            const jobs = document.querySelectorAll('.job');
+            jobs.forEach(job => {
+                const header = job.querySelector('.job-header');
+                const description = job.querySelector('.description');
+
+                header.addEventListener('click', () => {
+                    job.classList.toggle('active');
+                    if (job.classList.contains('active')) {
+                        description.style.maxHeight = description.scrollHeight + 'px';
+                    } else {
+                        description.style.maxHeight = '0';
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>

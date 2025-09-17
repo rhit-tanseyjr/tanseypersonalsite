@@ -229,7 +229,84 @@
             padding: 0;
             margin: 0;
         }
-/* 
+
+        .code-section {
+            margin-top: 1rem;
+        }
+
+        .code-dropdown {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .code-dropdown-btn {
+            background: var(--accent-yellow);
+            color: #000;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 200px;
+            transition: background-color 0.3s;
+        }
+
+        .code-dropdown-btn:hover {
+            background: #ffff66;
+        }
+
+        .dropdown-arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .code-dropdown.active .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        .code-dropdown-content {
+            display: none;
+            position: absolute;
+            background: var(--card-bg);
+            border: 1px solid #555;
+            border-radius: 4px;
+            z-index: 1000;
+            width: 100%;
+            max-width: 800px;
+            max-height: 500px;
+            margin-top: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .code-dropdown.active .code-dropdown-content {
+            display: block;
+        }
+
+        .code-file-header {
+            background: #3d3d3d;
+            padding: 0.5rem 1rem;
+            border-bottom: 1px solid #555;
+            color: var(--accent-yellow);
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .code-content {
+            margin: 0;
+            padding: 1rem;
+            background: #2a2a2a;
+            overflow: auto;
+            max-height: 400px;
+            font-size: 0.75rem;
+            line-height: 1.3;
+            font-family: 'Courier New', monospace;
+            white-space: pre;
+        }
+
+        /* 
         .skills-list li {
             background: #3d3d3d;
             padding: 0.5rem 1rem;
@@ -819,11 +896,24 @@
                                         sets</li>
                                 </ul>
                             </div>
-
-                            <div class="code-display">
-                                <h4>assembler.py</h4>
-                                <pre><code id="assembler-code" class="language-python">Loading code...</code></pre>
+                            <div class="code-section">
+                                <div class="code-dropdown">
+                                    <button class="code-dropdown-btn"
+                                        onclick="toggleCodeDropdown('assembler-dropdown')">
+                                        View Source Code
+                                        <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2">
+                                            <polyline points="6 9 12 15 18 9"></polyline>
+                                        </svg>
+                                    </button>
+                                    <div class="code-dropdown-content" id="assembler-dropdown">
+                                        <div class="code-file-header">assembler.py</div>
+                                        <pre class="code-content"><code id="assembler-code">Loading...</code></pre>
+                                    </div>
+                                </div>
                             </div>
+
+
                         </div>
                     </div>
                 </div>
@@ -1013,8 +1103,38 @@
     </footer>
 
     <script>
+        function toggleCodeDropdown(dropdownId) {
+            const dropdown = document.getElementById(dropdownId).parentElement;
+            dropdown.classList.toggle('active');
+
+            document.querySelectorAll('.code-dropdown').forEach(dd => {
+                if (dd !== dropdown) {
+                    dd.classList.remove('active');
+                }
+            });
+        }
+        document.addEventListener('click', function (event) {
+            if (!event.target.closest('.code-dropdown')) {
+                document.querySelectorAll('.code-dropdown').forEach(dd => {
+                    dd.classList.remove('active');
+                });
+            }
+        });
+
+        fetch('./assembler.py')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Could not load assembler.py');
+                }
+                return response.text();
+            })
+            .then(code => {
+                document.getElementById('assembler-code').textContent = code;
+            })
+            .catch(error => {
+                document.getElementById('assembler-code').textContent = 'Error loading code: ' + error.message;
+            });
         document.addEventListener('DOMContentLoaded', function () {
-            // campus activities
             const campusActivities = document.querySelectorAll('.campus-activity');
             campusActivities.forEach(activity => {
                 const header = activity.querySelector('.campus-header');
@@ -1029,7 +1149,6 @@
                     }
                 });
             });
-            // projects
             const projects = document.querySelectorAll('.project');
             projects.forEach(project => {
                 const header = project.querySelector('.project-header');
@@ -1045,7 +1164,6 @@
                 });
             });
 
-            // jobs
             const jobs = document.querySelectorAll('.job');
             jobs.forEach(job => {
                 const header = job.querySelector('.job-header');

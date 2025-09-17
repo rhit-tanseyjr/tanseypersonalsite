@@ -242,7 +242,7 @@
             text-align: center;
             border: 1px solid #555;
         }
-        
+
 
         /* PROJECT/JOB STYLES */
         .job,
@@ -436,6 +436,7 @@
             border: 1px solid #555;
             border-radius: 6px;
             overflow: hidden;
+            width: 100%;
         }
 
         .code-display h4 {
@@ -451,15 +452,21 @@
             margin: 0;
             padding: 1rem;
             background: #2a2a2a;
-            max-height: 500px;
+            max-height: 400px;
             overflow-y: auto;
             overflow-x: auto;
+            white-space: pre;
+            word-wrap: break-word;
+            max-width: 100%;
         }
 
         .code-display code {
-            font-size: 0.8rem;
-            line-height: 1.4;
+            font-size: 0.75rem;
+            line-height: 1.3;
             font-family: 'Courier New', Courier, monospace;
+            display: block;
+            white-space: pre;
+            overflow-wrap: break-word;
         }
 
         /* FOOTER */
@@ -768,7 +775,7 @@
                             rel="noopener noreferrer" class="more-info-link">View GitHub Repository↗</a>
                     </p>
                 </div>
-                
+
                 <div class="project">
                     <div class="project-header">
                         <div>
@@ -785,16 +792,16 @@
                             <div class="feature-highlights">
                                 <h3>Core Features:</h3>
 
-                                    <li>• Complete RISC-V Support: Full implementation of R, I, S, SB, U,
-                                        and UJ instruction types</li>
-                                    <li>• Label Resolution:Automatic address calculation and branch/jump
-                                        target resolution</li>
-                                    <li>• Pseudoinstruction Framework:Extensible system for custom
-                                        instruction macros</li>
-                                    <li>• Multi-format Output: Binary, hexadecimal, and annotated
-                                        assembly output modes</li>
-                                    <li>• Comprehensive Error Handling: Detailed exception system for
-                                        debugging invalid assembly</li>
+                                <li>• Complete RISC-V Support: Full implementation of R, I, S, SB, U,
+                                    and UJ instruction types</li>
+                                <li>• Label Resolution:Automatic address calculation and branch/jump
+                                    target resolution</li>
+                                <li>• Pseudoinstruction Framework:Extensible system for custom
+                                    instruction macros</li>
+                                <li>• Multi-format Output: Binary, hexadecimal, and annotated
+                                    assembly output modes</li>
+                                <li>• Comprehensive Error Handling: Detailed exception system for
+                                    debugging invalid assembly</li>
 
                             </div>
                             <div class="technical-details">

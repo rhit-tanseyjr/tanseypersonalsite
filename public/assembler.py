@@ -6,7 +6,6 @@
 """
 import string
 import re
-#To generate docs:
 # python3 -m pdoc assembler.py -o=docs 
 import sys, argparse
 from enum import Enum

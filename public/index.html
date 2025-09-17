@@ -280,6 +280,91 @@
             margin-bottom: 0.5rem;
         }
 
+        .processor-visualization {
+            margin-top: 1rem;
+        }
+
+        .diagram-img,
+        .chart-img {
+            width: 100%;
+            border: 1px solid #444;
+            border-radius: 4px;
+            margin: 0.5rem 0;
+        }
+
+        .diagram-caption {
+            text-align: center;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .feature-highlights,
+        .technical-details,
+        .achievements {
+            margin: 1.5rem 0;
+        }
+
+        .feature-highlights h3,
+        .technical-details h3,
+        .achievements h3 {
+            color: var(--accent-yellow);
+            border-bottom: 1px solid var(--accent-yellow);
+            padding-bottom: 0.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-highlights ul,
+        .achievements ul {
+            padding-left: 1.5rem;
+        }
+
+        .feature-highlights li,
+        .achievements li {
+            margin-bottom: 0.5rem;
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .detail-item {
+            background: #3d3d3d;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid var(--accent-yellow);
+        }
+
+        .detail-item h4 {
+            margin-top: 0;
+            color: var(--accent-yellow);
+        }
+
+        .project-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .project-links a {
+            background: var(--accent-yellow);
+            color: #000;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .project-links a:hover {
+            background: #ffff66;
+        }
+
         .description {
             margin: 0;
             white-space: pre-line;
@@ -443,7 +528,7 @@
                     <li>PCB Design, Circuit Simulation</li>
                     <li>Semiconductor Simulation Software</li>
                     <li>Computer Architecture</li>
-                    
+
 
                 </ul>
             </section>
@@ -465,10 +550,13 @@
                         </svg>
                     </div>
                     <p class="description">
-                        •	Simulated radiation-hardened semiconductors using CUDA and PETSC, used parallelization to reduce processing time
-                        •	Developed a new testing framework and performed GPU hardware analysis to recommend cost effective hardware solutions
-                        • <a href="https://www.jrcisi.com/radiation-analysis-and-design-software-tools"
-                            target="_blank" rel="noopener noreferrer" class="more-info-link">View JRC Integrated Systems Information↗</a>
+                        • Simulated radiation-hardened semiconductors using CUDA and PETSC, used parallelization to
+                        reduce processing time
+                        • Developed a new testing framework and performed GPU hardware analysis to recommend cost
+                        effective hardware solutions
+                        • <a href="https://www.jrcisi.com/radiation-analysis-and-design-software-tools" target="_blank"
+                            rel="noopener noreferrer" class="more-info-link">View JRC Integrated Systems
+                            Information↗</a>
 
                     </p>
                 </div>
@@ -496,7 +584,7 @@
                     </p>
                 </div>
 
-                <div class="project">
+                <!-- <div class="project">
                     <div class="project-header">
                         <div>
                             <p class="project-title">Pipelined RISC-V Processor</p>
@@ -518,13 +606,96 @@
                         by computing directly in hardware
                         • Reduced relPrime runtime from 172 → 58 cycles (n=6), 51,151 → 124 cycles (n=5040), and 366,757
                         → 200 cycles (n=30030)
-                        • Achieved extreme scalability: estimated reduction from ~3.98×10<sup>12</sup> → 317 cycles for
+                        • Achieved extreme scalability: estimated reduction from ~4.98×10<sup>12</sup> → 317 cycles for
                         n=223,092,870 (most difficult relative prime number testable on the register size)
                         • Demonstrated speedups exceeding <strong>10<sup>10</sup>×</strong> while improving readability,
                         predictability, and hardware efficiency
                         • <a href="https://github.com/rhit-csse232/rhit-csse232-2425b-pipe-tulip-2425b-pipe-02"
                             target="_blank" rel="noopener noreferrer" class="more-info-link">View GitHub Repository↗</a>
                     </p>
+                </div> -->
+                <div class="project">
+                    <div class="project-header">
+                        <div>
+                            <p class="project-title">Pipelined RISC-V Processor</p>
+                            <p class="date">Dec 2024 – Feb 2025</p>
+                        </div>
+                        <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <div class="description">
+                        <div class="processor-visualization">
+                            <div class="processor-diagram">
+                                <h3>Pipeline Architecture:</h3>
+                                <img src="https://via.placeholder.com/800x400/2d2d2d/00e1ff?text=RISC-V+5-Stage+Pipeline+Diagram"
+                                    alt="RISC-V Processor Pipeline Diagram" class="diagram-img">
+                                <p class="diagram-caption">5-stage pipelined RISC-V architecture with hazard detection
+                                </p>
+                            </div>
+
+                            <div class="feature-highlights">
+                                <h3>Key Features:</h3>
+                                <ul>
+                                    <p><strong>5-Stage Pipeline:</strong> IF, ID, EX, MEM, WB with full forwarding </p>
+                                    <p><strong>Hazard Handling:</strong> Advanced data forwarding and stall detection </p>
+                                    <p><strong>Extended ISA:</strong> Custom GCD instruction for hardware acceleration </p>
+                                    <p><strong>Memory-Mapped I/O:</strong> Integrated input/output system </p>
+                                    <p><strong>Branch Prediction:</strong> Early branch resolution in decode stage </p>
+                                </ul>
+                            </div>
+                            <div class="performance-comparison">
+                                <h3>Waveform Analysis:</h3>
+                                <img src="https://via.placeholder.com/800x300/2d2d2d/00e1ff?text=Waveform+Analysis+Showing+Pipeline+Execution"
+                                    alt="Waveform analysis of pipeline execution" class="chart-img">
+                                <p class="diagram-caption">GTKWave simulation showing pipeline execution and hazard
+                                    handling</p>
+                            </div>
+                            <div class="technical-details">
+                                <h3>Technical Implementation:</h3>
+                                <div class="detail-grid">
+                                    <div class="detail-item">
+                                        <h4>Pipeline Control</h4> Implemented full forwarding unit with EX/MEM and MEM/WB stage forwarding
+                                    </div>
+                                    <div class="detail-item">
+                                        <h4>Hazard Detection</h4> Designed stall logic for load-use hazards and control hazards
+                                    </div>
+                                    <div class="detail-item">
+                                        <h4>Custom ALU</h4> Extended ALU with GCD and MUL operations beyond standard RISC-V
+                                    </div>
+                                    <div class="detail-item">
+                                        <h4>Verification</h4> Comprehensive testbenches with custom vUnit testing framework
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="achievements">
+                                <h3>Achievements:</h3>
+                                <ul>
+                                    <li>Implemented a RISC-V processor in Verilog, evolving from single-cycle to
+                                        pipelined architecture</li>
+                                    <li>Added branch/jump handling with decode-stage detection and pipeline flushing
+                                    </li>
+                                    <li>Designed and integrated stall detection and data forwarding units to resolve
+                                        hazards</li>
+                                    <li>Verified correctness with custom testbenches and benchmarked
+                                        <code>gcd</code>/<code>relPrime</code> programs</li>
+                                    <li>Created and integrated a custom <code>gcd</code> instruction, eliminating
+                                        branching and loops by computing directly in hardware</li>
+                                    <li>Reduced relPrime runtime from 172 → 58 cycles (n=6), 51,151 → 124 cycles
+                                        (n=5040), and 366,757 → 200 cycles (n=30030)</li>
+                                    <li>Achieved extreme scalability: estimated reduction from ~3.98×10<sup>12</sup> →
+                                        317 cycles for n=223,092,870</li>
+                                    <li>Demonstrated speedups exceeding <strong>10<sup>10</sup>×</strong> while
+                                        improving readability, predictability, and hardware efficiency</li>
+                                </ul>
+                            </div>
+                                - <a href="https://github.com/rhit-csse232/rhit-csse232-2425b-pipe-tulip-2425b-pipe-02"
+                                    target="_blank" rel="noopener noreferrer" class="more-info-link">View GitHub
+                                    Repository↗</a>
+                            
+                        </div>
+                    </div>
                 </div>
 
 
@@ -636,7 +807,8 @@
                     Technology (Expected May 2027)</p>
                 <p></p> GPA 3.48/4.0</p>
                 <p>3x Dean's List </p>
-                <p><strong>Relevant Courses:</strong>Programming Language Concepts, Embedded Systems, Operating Systems, Computer
+                <p><strong>Relevant Courses:</strong>Programming Language Concepts, Embedded Systems, Operating Systems,
+                    Computer
                     Architecture, AC Circuits, Digital Systems, Signal Processing, OOP, Data Structures & Algorithms,
                     Signals and Systems</p>
                 <section id="campus-experience" aria-label="Campus Experience">
@@ -678,7 +850,8 @@
                             • Regularly practice algorithm problems and participate in team coding competitions
                             • Focus on developing efficient solutions to complex computational problems under time
                             constraints
-                            • Collaborated with teammates to solve problems using data structures and advanced algorithms
+                            • Collaborated with teammates to solve problems using data structures and advanced
+                            algorithms
                         </p>
                     </div>
 

@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
 
 <head>
     <meta charset="UTF-8" />
@@ -123,6 +126,8 @@
   }
   */
 
+  /* CSS STUFF*/
+
         header {
             position: fixed;
             top: 0;
@@ -238,6 +243,19 @@
             font-size: 0.9rem;
             text-align: center;
             border: 1px solid #555;
+        }
+
+        .skills-list li {
+            background: #3d3d3d;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-align: center;
+            border: 1px solid #555;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         /* PROJECT/JOB STYLES */
@@ -425,6 +443,37 @@
 
         .job.active .toggle-icon {
             transform: rotate(180deg);
+        }
+
+        .code-display {
+            margin: 1.5rem 0 0 0;
+            border: 1px solid #555;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .code-display h4 {
+            background: #3d3d3d;
+            margin: 0;
+            padding: 0.5rem 1rem;
+            border-bottom: 1px solid #555;
+            color: var(--accent-yellow);
+            font-size: 0.9rem;
+        }
+
+        .code-display pre {
+            margin: 0;
+            padding: 1rem;
+            background: #2a2a2a;
+            max-height: 500px;
+            overflow-y: auto;
+            overflow-x: auto;
+        }
+
+        .code-display code {
+            font-size: 0.8rem;
+            line-height: 1.4;
+            font-family: 'Courier New', Courier, monospace;
         }
 
         /* FOOTER */
@@ -629,8 +678,7 @@
                         <div class="processor-visualization">
                             <div class="processor-diagram">
                                 <h3>Pipeline Architecture:</h3>
-                                <img src="images/png2.svg"
-                                    alt="RISC-V Processor Pipeline Diagram" class="diagram-img">
+                                <img src="images/png2.svg" alt="RISC-V Processor Pipeline Diagram" class="diagram-img">
                                 <p class="diagram-caption">5-stage pipelined RISC-V architecture with hazard detection
                                 </p>
                             </div>
@@ -640,8 +688,10 @@
                                 <h3>Key Features:</h3>
                                 <ul>
                                     <p><strong>5-Stage Pipeline:</strong> IF, ID, EX, MEM, WB with full forwarding </p>
-                                    <p><strong>Hazard Handling:</strong> Advanced data forwarding and stall detection </p>
-                                    <p><strong>Extended ISA:</strong> Custom GCD instruction for hardware acceleration </p>
+                                    <p><strong>Hazard Handling:</strong> Advanced data forwarding and stall detection
+                                    </p>
+                                    <p><strong>Extended ISA:</strong> Custom GCD instruction for hardware acceleration
+                                    </p>
                                     <p><strong>Memory-Mapped I/O:</strong> Integrated input/output system </p>
                                     <p><strong>Branch Prediction:</strong> Early branch resolution in decode stage </p>
                                 </ul>
@@ -657,16 +707,20 @@
                                 <h3>Technical Implementation:</h3>
                                 <div class="detail-grid">
                                     <div class="detail-item">
-                                        <h4>Pipeline Control</h4> Implemented full forwarding unit with EX/MEM and MEM/WB stage forwarding
+                                        <h4>Pipeline Control</h4> Implemented full forwarding unit with EX/MEM and
+                                        MEM/WB stage forwarding
                                     </div>
                                     <div class="detail-item">
-                                        <h4>Hazard Detection</h4> Designed stall logic for load-use hazards and control hazards
+                                        <h4>Hazard Detection</h4> Designed stall logic for load-use hazards and control
+                                        hazards
                                     </div>
                                     <div class="detail-item">
-                                        <h4>Custom ALU</h4> Extended ALU with GCD and MUL operations beyond standard RISC-V
+                                        <h4>Custom ALU</h4> Extended ALU with GCD and MUL operations beyond standard
+                                        RISC-V
                                     </div>
                                     <div class="detail-item">
-                                        <h4>Verification</h4> Comprehensive testbenches with custom vUnit testing framework
+                                        <h4>Verification</h4> Comprehensive testbenches with custom vUnit testing
+                                        framework
                                     </div>
                                 </div>
                             </div>
@@ -680,7 +734,8 @@
                                     <li>Designed and integrated stall detection and data forwarding units to resolve
                                         hazards</li>
                                     <li>Verified correctness with custom testbenches and benchmarked
-                                        <code>gcd</code>/<code>relPrime</code> programs</li>
+                                        <code>gcd</code>/<code>relPrime</code> programs
+                                    </li>
                                     <li>Created and integrated a custom <code>gcd</code> instruction, eliminating
                                         branching and loops by computing directly in hardware</li>
                                     <li>Reduced relPrime runtime from 172 → 58 cycles (n=6), 51,151 → 124 cycles
@@ -691,10 +746,10 @@
                                         improving readability, predictability, and hardware efficiency</li>
                                 </ul>
                             </div>
-                                - <a href="https://github.com/rhit-csse232/rhit-csse232-2425b-pipe-tulip-2425b-pipe-02"
-                                    target="_blank" rel="noopener noreferrer" class="more-info-link">View GitHub
-                                    Repository↗</a>
-                            
+                            - <a href="https://github.com/rhit-csse232/rhit-csse232-2425b-pipe-tulip-2425b-pipe-02"
+                                target="_blank" rel="noopener noreferrer" class="more-info-link">View GitHub
+                                Repository↗</a>
+
                         </div>
                     </div>
                 </div>
@@ -727,6 +782,89 @@
                             rel="noopener noreferrer" class="more-info-link">View GitHub Repository↗</a>
                     </p>
                 </div>
+
+                <div class="project">
+                    <div class="project-header">
+                        <div>
+                            <p class="project-title">RISC-V 32-bit Assembler</p>
+                            <p class="date">Aug 2024 – Nov 2024</p>
+                        </div>
+                        <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <div class="description">
+                        <div class="assembler-details">
+                            <div class="feature-highlights">
+                                <h3>Core Features:</h3>
+
+                                <li>• Complete RISC-V Support: Full implementation of R, I, S, SB, U,
+                                    and UJ instruction types</li>
+                                <li>• Label Resolution:Automatic address calculation and branch/jump
+                                    target resolution</li>
+                                <li>• Pseudoinstruction Framework:Extensible system for custom
+                                    instruction macros</li>
+                                <li>• Multi-format Output: Binary, hexadecimal, and annotated
+                                    assembly output modes</li>
+                                <li>• Comprehensive Error Handling: Detailed exception system for
+                                    debugging invalid assembly</li>
+
+                            </div>
+                            <div class="technical-details">
+                                <h3>Technical Implementation:</h3>
+                                <div class="detail-grid">
+                                    <div class="detail-item">
+                                        <h4>Multi-Pass Architecture</h4>
+                                        Four-pass design: comment removal, pseudoinstruction expansion, label parsing,
+                                        and machine code generation
+                                    </div>
+                                    <div class="detail-item">
+                                        <h4>Instruction Encoding</h4>
+                                        Precise bit-field manipulation for all RISC-V instruction formats with two's
+                                        complement immediate handling
+                                    </div>
+                                    <div class="detail-item">
+                                        <h4>Address Resolution</h4>
+                                        PC-relative addressing with automatic offset calculation for branches and jumps
+                                    </div>
+                                    <div class="detail-item">
+                                        <h4>Register Mapping</h4>
+                                        Complete register alias support (x0-x31, ra, sp, t0-t6, s0-s11, a0-a7, etc.)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="achievements">
+                                <h3>Key Achievements:</h3>
+                                <ul>
+                                    <li>Developed complete 32-bit RISC-V assembler supporting all major instruction
+                                        types</li>
+                                    <li>Implemented sophisticated label resolution system with forward reference support
+                                    </li>
+                                    <li>Created extensible pseudoinstruction framework allowing custom macro definitions
+                                    </li>
+                                    <li>Built comprehensive error handling with specific exception types (BadImmediate,
+                                        BadRegister, BadLabel, etc.)</li>
+                                    <li>Designed multi-format output system with debugging annotations and address
+                                        mapping</li>
+                                    <li>Achieved full compatibility with standard RISC-V assembly syntax including
+                                        base-offset addressing</li>
+                                    <li>Implemented robust two's complement arithmetic for immediate value encoding</li>
+                                    <li>Created modular architecture enabling easy extension for additional instruction
+                                        sets</li>
+                                </ul>
+                            </div>
+
+                            <div class="code-display">
+                                <h4>assembler.py</h4>
+                                <pre><code id="assembler-code" class="language-python">Loading code...</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
 
                 <div class="project">
                     <div class="project-header">
@@ -961,6 +1099,20 @@
                 });
             });
         });
+        // Load assembler code
+        fetch('./assembler.py')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Could not load assembler.py');
+                }
+                return response.text();
+            })
+            .then(code => {
+                document.getElementById('assembler-code').textContent = code;
+            })
+            .catch(error => {
+                document.getElementById('assembler-code').textContent = 'Error loading code: ' + error.message;
+            });
     </script>
 
 </body>

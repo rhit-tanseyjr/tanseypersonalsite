@@ -863,7 +863,175 @@
                             target="_blank" rel="noopener noreferrer" class="more-info-link">View Project Details ↗</a> -->
                     </p>
                 </div>
+
+                <div class="project">
+                    <div class="project-header">
+                        <div>
+                            <p class="project-title">Communication & Network Projects</p>
+                            <p class="date">Sep 2025 – Oct 2025</p>
+                        </div>
+                        <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <div class="description">
+                        <div class="protocol-stack-overview">
+                            <h3>Overview</h3>
+                            <p>Implementation of two network communication systems including a TCP-based chat
+                                application and custom UDP-based protocol stack with packet encapsulation. Co-Authored by Elliot Rodgers</p>
+
+                            <!-- <div class="protocol-diagram">
+                                <h4>Protocol Stack Architecture:</h4>
+                                <img src="https://via.placeholder.com/800x200/2d2d2d/00e1ff?text=Protocol+Stack+Diagram"
+                                    alt="Network Protocol Stack Diagram" class="diagram-img">
+                                <p class="diagram-caption">Custom protocol stack implementation with RHP and RHMP
+                                    layers over UDP transport</p>
+                            </div> -->
+
+                            <div class="project-components">
+                                <h3>Project Components</h3>
+                                <div class="component">
+                                    <h4>TCP Socket Chat Application</h4>
+                                    <div class="detail-grid">
+                                        <div class="detail-item">
+                                            <h5>Client-Server Architecture</h5>
+                                            Implemented bidirectional real-time messaging with multithreaded design
+                                        </div>
+                                        <div class="detail-item">
+                                            <h5>User Authentication</h5>
+                                            Dynamic username exchange and connection establishment protocol
+                                        </div>
+                                        <div class="detail-item">
+                                            <h5>Concurrent Processing</h5>
+                                            POSIX threads for simultaneous send/receive operations
+                                        </div>
+                                        <div class="detail-item">
+                                            <h5>Connection Management</h5>
+                                            Graceful connection termination with 'quit' command handling
+                                        </div>
+                                    </div>
+                                    <div class="code-samples">
+                                        <h5>Key Implementation Features:</h5>
+                                        <ul>
+                                            <li><strong>Socket Programming:</strong> TCP stream sockets with proper
+                                                connection lifecycle management</li>
+                                            <li><strong>Multithreading:</strong> Separate threads for sending and
+                                                receiving messages</li>
+                                            <li><strong>Message Protocol:</strong> Custom NAME: prefix for username
+                                                exchange</li>
+                                            <li><strong>Error Handling:</strong> Comprehensive error checking and
+                                                graceful degradation</li>
+                                            <li><strong>Platform Compatibility:</strong> Cross-platform support for
+                                                UNIX/Linux environments</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="component">
+                                    <h4>Custom Protocol Stack (RHP/RHMP)</h4>
+                                    <div class="detail-grid">
+                                        <div class="detail-item">
+                                            <h5>Rose-Hulman Protocol (RHP)</h5>
+                                            Transport layer protocol with version control, port addressing, and
+                                            checksum verification
+                                        </div>
+                                        <div class="detail-item">
+                                            <h5>Rose-Hulman Message Protocol (RHMP)</h5>
+                                            Application layer protocol with message and ID request/response
+                                            capabilities
+                                        </div>
+                                        <div class="detail-item">
+                                            <h5>Packet Encapsulation</h5>
+                                            Proper layering with RHMP encapsulated within RHP packets
+                                        </div>
+                                        <div class="detail-item">
+                                            <h5>Checksum Validation</h5>
+                                            Internet checksum implementation with retry mechanisms
+                                        </div>
+                                    </div>
+
+                                    <div class="protocol-details">
+                                        <h5>Protocol Specifications:</h5>
+                                        <ul>
+                                            <li><strong>RHP Header:</strong> 8-bit version, 16-bit
+                                                source/destination ports, 12-bit length, 4-bit type</li>
+                                            <li><strong>RHMP Header:</strong> 14-bit communication ID, 6-bit type,
+                                                12-bit length</li>
+                                            <li><strong>Message Types:</strong> Control messages,
+                                                Message_Request/Response, ID_Request/Response</li>
+                                            <li><strong>Error Handling:</strong> Checksum verification with
+                                                automatic retransmission</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="technical-implementation">
+                                <h3>Technical Implementation</h3>
+
+                                <div class="implementation-details">
+                                    <div class="detail-item">
+                                        <h4>Socket Management</h4>
+                                        <ul>
+                                            <li>TCP sockets for reliable chat communication (SOCK_STREAM)</li>
+                                            <li>UDP sockets for custom protocol implementation (SOCK_DGRAM)</li>
+                                            <li>Proper socket binding, listening, and connection acceptance</li>
+                                            <li>Graceful socket shutdown and resource cleanup</li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="detail-item">
+                                        <h4>Packet Construction</h4>
+                                        <ul>
+                                            <li>Bit-level packet header construction with proper endianness</li>
+                                            <li>Internet checksum calculation using one's complement</li>
+                                            <li>Dynamic payload handling with proper padding for alignment</li>
+                                            <li>Protocol field encoding/decoding with bit manipulation</li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="detail-item">
+                                        <h4>Threading Architecture</h4>
+                                        <ul>
+                                            <li>POSIX threads for concurrent message handling</li>
+                                            <li>Proper thread synchronization and resource sharing</li>
+                                            <li>Clean thread termination on application exit</li>
+                                            <li>Non-blocking I/O with proper buffer management</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="achievements">
+                                <h3>Key Achievements</h3>
+                                <ul>
+                                    <li>Successfully implemented a complete client-server chat application with
+                                        real-time bidirectional communication</li>
+                                    <li>Designed and implemented custom network protocols (RHP/RHMP) from
+                                        specification</li>
+                                    <li>Implemented robust error handling with checksum verification and automatic
+                                        retransmission</li>
+                                    <li>Achieved proper packet encapsulation with layered protocol architecture</li>
+                                    <li>Developed comprehensive testing framework with server response validation
+                                    </li>
+                                    <li>Created modular, well-documented code following networking best practices
+                                    </li>
+                                    <li>Demonstrated understanding of TCP vs UDP tradeoffs in different application
+                                        scenarios</li>
+                                </ul>
+                            </div>
+
+                            <div class="project-links">
+                                <a href="https://github.com/rhit-tanseyjr/ece312-project-1-f2025-2026/tree/main"
+                                    target="_blank" rel="noopener noreferrer">View Socket Chat Repository</a>
+                                <a href="https://github.com/rhit-tanseyjr/ece312-project-2-f2025-2026" target="_blank"
+                                    rel="noopener noreferrer">View Protocol Messaging Repository</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
+
 
             <section id="work-experience" aria-label="Work Experience">
                 <h2>Work Experience</h2>

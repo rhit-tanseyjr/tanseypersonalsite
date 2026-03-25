@@ -42,7 +42,7 @@
             line-height: 1.5;
             letter-spacing: 0.7px;
             min-height: 100vh;
-            transition: opacity 0.8s ease;
+            transition: opacity 0.3s ease;
         }
 
 
@@ -393,12 +393,12 @@
         .project.active .description {
             max-height: 500px;
             margin-top: 0.5rem;
-            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+            transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
                 margin-top 0.3s ease;
         }
 
         .toggle-icon {
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .toggle-icon {
@@ -416,7 +416,7 @@
             font-size: 0.95rem;
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             will-change: max-height;
         }
 
@@ -433,7 +433,7 @@
         }
 
         .job .toggle-icon {
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             color: var(--accent-yellow);
         }
 
@@ -503,8 +503,8 @@
         <div class="left-column">
             <section id="about-me" aria-label="About Me">
                 <h2>About Me</h2>
-                <p>Third Year Computer Engineering student at Rose-Hulman Institute of Technology seeking an internship
-                    for Summer 2026.</p>
+                <p>Third Year Computer Engineering student at the Rose-Hulman Institute of Technology seeking Computer Engineering Position 6/2/2027
+                    </p>
             </section>
 
             <section id="contact-me" aria-label="Contact Me">
@@ -561,8 +561,106 @@
                 <div class="project">
                     <div class="project-header">
                         <div>
+                            <p class="project-title">RISC-V Embedded Operating System Kernel</p>
+                            <p class="date">Sept 2025 – Present</p>
+                        </div>
+                        <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <p class="description">
+                        Developing bare-metal embedded OS for RISC-V architecture built from scratch for 32-bit RISC-V, running under QEMU with a VirtIO block device. Everything from bootloader to userspace shell is hand-written in C and assembly without use of external libraries. Implements full privilege separation (S-mode/U-mode), Sv32 two-level page tables, a round-robin scheduler (priority is in progress), and a VirtIO block driver.
+                    </p>
+                        <div class="campus-activity">
+                            <div class="campus-header">
+                                <div>
+                                    <p class="campus-title">Overview &amp; Kernel</p>
+                                </div>
+                                <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                        <p class="description">
+                            • Bootloader sets stack pointer via linker-defined <code>__stack_top</code> and jumps to <code>kernel_main</code> in a naked assembly boot stub
+                            • BSS zero-initialized at startup via <code>memset</code> over <code>[__bss, __bss_end)</code> before any C runs
+                            • SBI integration: console I/O via <code>ecall</code> into OpenSBI using legacy <code>putchar</code>/<code>getchar</code> extensions
+                            • Trap handling via <code>kernel_entry</code>: full 31-register context save/restore using <code>csrrw sp, sscratch, sp</code> for stack switching
+                            • Syscall dispatch: <code>scause == 8</code> routes to <code>handle_syscall</code>, advancing <code>sepc += 4</code> to skip the <code>ecall</code> on return
+                            • <code>PANIC</code> macro captures <code>__FILE__</code> and <code>__LINE__</code> and halts — used as hard assertion throughout the kernel
+                        </p>
+                        <div class="campus-activity">
+                            <div class="campus-header">
+                                <div>
+                                    <p class="campus-title">Process Scheduler</p>
+                                </div>
+                                <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                        <p class="description">
+                        • Cooperative round-robin: <code>yield()</code> scans <code>procs[]</code> for the next <code>PROC_RUNNABLE</code> process with <code>pid &gt; 0</code>
+                        • Idle process (pid=0) created at boot as fallback; kernel panics if execution ever returns to it
+                        • Context switch: naked assembly saves 13 callee-saved registers (<code>ra</code>, <code>s0</code>–<code>s11</code>), swaps <code>sp</code> via <code>sw sp,(a0)</code> / <code>lw sp,(a1)</code>, restores next process's registers
+                        • Per-process 8 KiB kernel stacks embedded in <code>struct process</code>; initial stack frame pre-loaded with <code>user_entry</code> as return address
+                        • <code>satp</code> CSR written on every context switch with <code>SATP_SV32 | (page_table / PAGE_SIZE)</code>, bracketed by <code>sfence.vma</code> TLB flushes
+                        • <code>sscratch</code> updated to each process's kernel stack top so trap entry always finds the correct stack
+                        • Process exit: <code>SYS_EXIT</code> marks state <code>PROC_EXITED</code> and calls <code>yield()</code>; slots reused via <code>PROC_UNUSED</code> check
+                        </p>
+                    
+                        <div class="campus-activity">
+                            <div class="campus-header">
+                                <div>
+                                    <p class="campus-title">Virtual Memory &amp; Paging</p>
+                                </div>
+                                <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                        <p class="description">
+                        • Sv32 two-level page table: 10-bit VPN[1] indexes root table, 10-bit VPN[0] indexes leaf PTE — matches RISC-V Sv32 spec exactly
+                        • <code>map_page()</code> allocates a second-level table on demand if root PTE lacks <code>PAGE_V</code>, writes leaf as <code>(paddr/PAGE_SIZE)&lt;&lt;10 | flags | PAGE_V</code>
+                        • Kernel identity-mapped into every process over <code>[__kernel_base, __free_ram_end)</code> with <code>PAGE_R|W|X</code> — allows trap handling without a page table switch
+                        • VirtIO MMIO region (<code>0x10001000</code>) explicitly mapped <code>PAGE_R|W</code> in each process so device registers are accessible from kernel code in any address space
+                        • User binary copied page-by-page from embedded <code>shell.bin.o</code> into physical pages, mapped at <code>USER_BASE = 0x1000000</code> with <code>PAGE_U|R|W|X</code>
+                        • Partial last page handled: copy size clamped to <code>min(PAGE_SIZE, remaining)</code> to avoid over-reading the image
+                        • <code>user_entry</code> naked stub sets <code>sepc = USER_BASE</code>, <code>sstatus.SPIE = 1</code>, executes <code>sret</code> to drop into U-mode
+                        </p>
+
+                        <div class="campus-activity">
+                            <div class="campus-header">
+                                <div>
+                                    <p class="campus-title">Disk I/O</p>
+                                </div>
+                                <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                        <p class="description">
+                        • VirtIO 1.0 legacy MMIO block driver targeting <code>virtio-blk-device</code> on QEMU bus at <code>0x10001000</code>
+                        • Init sequence: reset → ACK → DRIVER → set page size → init virtqueue → DRIVER_OK; panics on magic/version/device-ID mismatch
+                        • Virtqueue allocated as one physically contiguous page via <code>alloc_pages</code>, written to <code>VIRTIO_REG_QUEUE_PFN</code> as a page frame number; queue size fixed at 16
+                        • <code>virtq_kick()</code> posts descriptor to available ring, increments index, issues <code>__sync_synchronize()</code> barrier, notifies device via <code>VIRTIO_REG_QUEUE_NOTIFY</code>
+                        • <code>virtq_is_busy()</code> polls used ring index against <code>last_used_index</code> for completion without interrupts
+                        • Disk capacity read as 64-bit sector count from <code>VIRTIO_REG_DEVICE_CONFIG</code>; bounds-checked before issuing any request
+                        • MMIO accessors use <code>volatile</code> pointer casts; all structs marked <code>__attribute__((packed))</code>
+                        </p>
+                    
+                    </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+
+                <div class="project">
+                    <div class="project-header">
+                        <div>
                             <p class="project-title">Scheme Interpreter & Language Implementation</p>
-                            <p class="date">Oct 2025 – Present</p>
+                            <p class="date">Oct 2025 – Nov 2025</p>
                         </div>
                         <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -578,27 +676,7 @@
                     </p>
                 </div>
 
-                <div class="project">
-                    <div class="project-header">
-                        <div>
-                            <p class="project-title">RISC-V Embedded Operating System Kernel</p>
-                            <p class="date">Sept 2025 – Present</p>
-                        </div>
-                        <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
-                    </div>
-                    <p class="description">
-                        • Developing bare-metal embedded OS for RISC-V architecture
-                        • Implemented bootloader, BSS initialization, and memory management in C and RISC-V assembly
-                        • Engineered SBI (Supervisor Binary Interface) integration for hardware abstraction via ECALL instructions
-                        • Built complete printf implementation with variadic argument handling and formatted output for kernel debugging
-                        • Designed trap handling system with full context save/restore using RISC-V CSRs (Control Status Registers)
-                        • Created panic handler and robust kernel entry point with stack management and register preservation
-                        • Currently implementing interrupt controllers, preemptive multitasking, and device driver framework
-                    </p>
-                </div>
+                
 
                 <div class="project">
                     <div class="project-header">
@@ -1075,7 +1153,16 @@
                 <div class="job">
                     <div class="job-header">
                         <div>
-                            <p class="job-title">Intern</p>
+                            <p class="job-title">Software Engineering Intern</p>
+                            <p class="company">V2X, Crane, IN</p>
+                            <p class="date">June 1 2026</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="job">
+                    <div class="job-header">
+                        <div>
+                            <p class="job-title">Software Engineering Intern</p>
                             <p class="company">JRC Integrated Systems, Crane, IN</p>
                             <p class="date">May 2025 – Aug 2025</p>
                         </div>

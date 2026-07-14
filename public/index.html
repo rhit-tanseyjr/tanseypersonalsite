@@ -12,7 +12,6 @@
             --card-bg: #2d2d2d;
             --accent-blue: #00e1ff;
             --accent-yellow: #fdf800;
-            /* CHANGE THIS TO MODIFY YELLOW COLOR */
             --text-primary: #f0f0f0;
             --text-secondary: #cccccc;
         }
@@ -21,16 +20,6 @@
             box-sizing: border-box;
         }
 
-        /* body {
-            margin: 0;
-            background-color: var(--dark-bg);
-            color: var(--text-primary);
-            font-family: 'Share Tech Mono', monospace;
-            line-height: 1.5;
-            letter-spacing: 0.7px;
-            min-height: 100vh;
-            transition: opacity 0.8s ease;
-        }*/
         body {
             background:
                 linear-gradient(rgba(26, 26, 26, 0.85), rgba(26, 26, 26, 0.85)),
@@ -42,86 +31,7 @@
             line-height: 1.5;
             letter-spacing: 0.7px;
             min-height: 100vh;
-            transition: opacity 0.3s ease;
         }
-
-
-        body.loaded {
-            opacity: 1;
-        }
-
-        /* LOADING ANIMATION */
-        /*
-  #loader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--dark-bg);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 99999;
-    transition: opacity 0.8s ease-out;
-  }
-  
-  .loader-content {
-    text-align: center;
-    width: 300px;
-  }
-  
-  .terminal-text {
-    color: var(--accent-yellow);
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-    overflow: hidden;
-    white-space: nowrap;
-    border-right: 0.15em solid var(--accent-yellow);
-    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
-  }
-  
-  @keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
-  }
-  
-  @keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: var(--accent-yellow) }
-  }
-  
-  .progress-text {
-    color: var(--accent-yellow);
-    font-family: 'Share Tech Mono', monospace;
-    margin-top: 2rem;
-    font-size: 0.9rem;
-    text-align: center;
-  }
-  
-  .progress-bar {
-    width: 100%;
-    height: 4px;
-    background: #444;
-    margin: 1rem auto;
-    overflow: hidden;
-    border-radius: 2px;
-  }
-  
-  .progress {
-    height: 100%;
-    width: 0;
-    background: var(--accent-yellow);
-    transition: width 0.3s ease;
-  }
-  
-  body.loaded #loader {
-    opacity: 0;
-    pointer-events: none;
-  }
-  */
 
         header {
             position: fixed;
@@ -147,6 +57,12 @@
             font-size: 1.5rem;
         }
 
+        .header-left .header-subtitle {
+            margin: 0;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
         .header-right a {
             margin-left: 1rem;
             transition: color 0.3s ease;
@@ -160,6 +76,7 @@
             width: 24px;
             height: 24px;
             vertical-align: middle;
+            fill: #ffffff;
         }
 
         a[href^="mailto:"] {
@@ -169,10 +86,6 @@
 
         a[href^="mailto:"]:hover {
             text-decoration: underline;
-        }
-
-        .header-right svg {
-            fill: #ffffff;
         }
 
         main {
@@ -194,7 +107,6 @@
             }
         }
 
-
         section {
             background-color: var(--card-bg);
             padding: 1rem;
@@ -208,7 +120,6 @@
         h3 {
             margin-top: 0;
             color: var(--accent-yellow);
-            /* Yellow acc */
         }
 
         section h2::after {
@@ -229,17 +140,6 @@
             padding: 0;
             margin: 0;
         }
-
-        /* 
-        .skills-list li {
-            background: #3d3d3d;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            text-align: center;
-            border: 1px solid #555;
-        } */
 
         .skills-list li {
             background: #3d3d3d;
@@ -262,22 +162,24 @@
             border-radius: 6px;
             padding: 0.5rem;
             border-left: 3px solid var(--accent-yellow);
-            /* Yellow accent */
             border: 1px solid #555;
         }
 
-        .project-header {
+        .project-header,
+        .job-header,
+        .campus-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            cursor: pointer;
         }
 
         .job-title,
-        .project-title {
+        .project-title,
+        .campus-title {
             font-weight: 700;
             font-size: 1.1rem;
             color: var(--accent-yellow);
-            /* Yellow titles */
             margin-bottom: 0.3rem;
         }
 
@@ -294,12 +196,7 @@
             margin-bottom: 0.5rem;
         }
 
-        .processor-visualization {
-            margin-top: 1rem;
-        }
-
-        .diagram-img,
-        .chart-img {
+        .diagram-img {
             width: 100%;
             border: 1px solid #444;
             border-radius: 4px;
@@ -353,7 +250,8 @@
             border-left: 3px solid var(--accent-yellow);
         }
 
-        .detail-item h4 {
+        .detail-item h4,
+        .detail-item h5 {
             margin-top: 0;
             color: var(--accent-yellow);
         }
@@ -365,7 +263,8 @@
             margin-top: 1.5rem;
         }
 
-        .project-links a {
+        .project-links a,
+        .more-info-link {
             background: var(--accent-yellow);
             color: #000;
             padding: 0.5rem 1rem;
@@ -373,9 +272,11 @@
             text-decoration: none;
             font-weight: bold;
             transition: background-color 0.3s;
+            display: inline-block;
         }
 
-        .project-links a:hover {
+        .project-links a:hover,
+        .more-info-link:hover {
             background: #ffff66;
         }
 
@@ -385,60 +286,35 @@
             font-size: 0.95rem;
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-                margin-top 0.3s ease;
+            transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), margin-top 0.3s ease;
             will-change: max-height;
         }
 
-        .project.active .description {
-            max-height: 500px;
+        .project.active > .description,
+        .job.active > .description,
+        .campus-activity.active > .description {
+            max-height: 3000px;
             margin-top: 0.5rem;
-            transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-                margin-top 0.3s ease;
-        }
-
-        .toggle-icon {
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .toggle-icon {
             transition: transform 0.3s ease;
             color: var(--accent-yellow);
+            flex-shrink: 0;
         }
 
-        .project.active .toggle-icon {
+        .project.active > .project-header .toggle-icon,
+        .job.active > .job-header .toggle-icon,
+        .campus-activity.active > .campus-header .toggle-icon {
             transform: rotate(180deg);
         }
 
-        .job .description {
-            margin: 0;
-            white-space: pre-line;
-            font-size: 0.95rem;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            will-change: max-height;
-        }
-
-        .job.active .description {
-            max-height: 500px;
-            margin-top: 0.5rem;
-        }
-
-        .job-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-        }
-
-        .job .toggle-icon {
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            color: var(--accent-yellow);
-        }
-
-        .job.active .toggle-icon {
-            transform: rotate(180deg);
+        .campus-activity {
+            margin-top: 0.75rem;
+            background: #363636;
+            border-radius: 6px;
+            padding: 0.5rem;
+            border: 1px solid #4a4a4a;
         }
 
         /* FOOTER */
@@ -450,10 +326,8 @@
             font-size: 0.9rem;
             padding: 1rem;
             border-top: 1px solid rgba(253, 248, 0, 0.3);
-            /* Yellow accent */
         }
 
-        /* RESPONSIVE ADJUSTMENTS */
         @media (max-width: 600px) {
             .skills-list {
                 grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
@@ -464,22 +338,10 @@
 
 <body>
 
-    <!-- Loading Animation -->
-    <!--
-<div id="loader">
-  <div class="loader-content">
-    <div class="terminal-text">Initializing Portfolio...</div>
-    <div class="progress-text">Indexing: <span id="progress-percent">0</span>%</div>
-    <div class="progress-bar">
-      <div class="progress" id="progress-bar"></div>
-    </div>
-  </div>
-</div>
--->
-
     <header>
         <div class="header-left" role="banner">
             <h1>John Tansey</h1>
+            <p class="header-subtitle">Software Engineering Intern @ V2X | Computer Engineering, Rose-Hulman</p>
         </div>
         <div class="header-right">
             <a href="https://linkedin.com/in/john-r-tansey" target="_blank" aria-label="LinkedIn Profile"
@@ -503,9 +365,8 @@
         <div class="left-column">
             <section id="about-me" aria-label="About Me">
                 <h2>About Me</h2>
-                <p>Third Year Computer Engineering student at the Rose-Hulman Institute of Technology seeking Computer Engineering Position 6/2/2027
-                    </p>
-            </section>
+                <p>Senior Computer Engineering major at the Rose-Hulman Institute of Technology, originally from Madison, Wisconsin. Currently a Software Engineering Intern at V2X in Indianapolis, IN.</p>
+                 </section>
 
             <section id="contact-me" aria-label="Contact Me">
                 <h2>Contact Me</h2>
@@ -535,6 +396,7 @@
                     <li>MATLAB</li>
                     <li>HolyC</li>
                     <li>CUDA</li>
+                    <li>Ghidra</li>
                     <li>Operating System Development</li>
                     <li>Real-Time Operating Systems (RTOS)</li>
                     <li>QEMU</li>
@@ -553,10 +415,48 @@
                 </ul>
             </section>
         </div>
-        
+
         <div class="right-column">
             <section id="project-experience" aria-label="Project Experience">
                 <h2>Project Experience</h2>
+
+                <div class="project">
+                    <div class="project-header">
+                        <div>
+                            <p class="project-title">Resilient Datalink Architecture for UAS</p>
+                            <p class="date">May 2026 – Present</p>
+                        </div>
+                        <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <p class="description">
+                        • Developing novel RF-alternative communication hardware for UAS resilient command and control in contested, jamming-prone environments as part of Fafnir Aerospace's WYRM-1 platform
+                        • Focused on signal processing and electronics hardware design for reliable link performance under adversarial conditions
+                        • Co-founded and building alongside Ethan Schurr, Chase Masterson, and Brett Hixon
+                    </p>
+                </div>
+
+                <div class="project">
+    <div class="project-header">
+        <div>
+            <p class="project-title">Mesh Network Protocol for Autonomous Drone Swarms</p>
+            <p class="date">March 2026 – May 2026</p>
+        </div>
+        <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+    </div>
+    <p class="description">
+        • Co-developed a mesh network protocol enabling beyond-line-of-sight (BLOS) communication between operators, using a network of autonomous drones as intermediate routers
+        • Employed a Raft-derivative consensus algorithm across drone nodes to maintain shared, reliable state and situational knowledge throughout the mesh
+        • Designed to position operators at the edges of the network, communicating via short-range, more secure line-of-sight (LOS) links to nearby drones, which relay data hop-by-hop across the mesh to reach the operator on the opposite end
+        • Implemented object-of-interest detection reporting, allowing drones to identify targets and propagate that information back to operators at the network edge
+        • Co-authored with Brett Hixon and Ethan Schurr
+    </p>
+</div>
 
                 <div class="project">
                     <div class="project-header">
@@ -570,96 +470,98 @@
                         </svg>
                     </div>
                     <p class="description">
-                        Developing bare-metal embedded OS for RISC-V architecture built from scratch for 32-bit RISC-V, running under QEMU with a VirtIO block device. Everything from bootloader to userspace shell is hand-written in C and assembly without use of external libraries. Implements full privilege separation (S-mode/U-mode), Sv32 two-level page tables, a round-robin scheduler (priority is in progress), and a VirtIO block driver.
+                        Developing a bare-metal embedded OS for 32-bit RISC-V from scratch, running under QEMU with a VirtIO block device. Everything from bootloader to userspace shell is hand-written in C and assembly without external libraries. Implements full privilege separation (S-mode/U-mode), Sv32 two-level page tables, a round-robin scheduler, a VirtIO block driver, and a tar-based file system. Currently extending the kernel with interrupt controllers, preemptive multitasking, and a broader device driver framework.
                     </p>
-                        <div class="campus-activity">
-                            <div class="campus-header">
-                                <div>
-                                    <p class="campus-title">Overview &amp; Kernel</p>
-                                </div>
-                                <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="6 9 12 15 18 9"></polyline>
-                                </svg>
+
+                    <div class="campus-activity">
+                        <div class="campus-header">
+                            <div>
+                                <p class="campus-title">Overview &amp; Kernel</p>
                             </div>
+                            <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
                         <p class="description">
                             • Bootloader sets stack pointer via linker-defined <code>__stack_top</code> and jumps to <code>kernel_main</code> in a naked assembly boot stub
                             • BSS zero-initialized at startup via <code>memset</code> over <code>[__bss, __bss_end)</code> before any C runs
                             • SBI integration: console I/O via <code>ecall</code> into OpenSBI using legacy <code>putchar</code>/<code>getchar</code> extensions
                             • Trap handling via <code>kernel_entry</code>: full 31-register context save/restore using <code>csrrw sp, sscratch, sp</code> for stack switching
                             • Syscall dispatch: <code>scause == 8</code> routes to <code>handle_syscall</code>, advancing <code>sepc += 4</code> to skip the <code>ecall</code> on return
-                            • <code>PANIC</code> macro captures <code>__FILE__</code> and <code>__LINE__</code> and halts — used as hard assertion throughout the kernel
+                            • <code>PANIC</code> macro captures <code>__FILE__</code> and <code>__LINE__</code> and halts — used as a hard assertion throughout the kernel
                         </p>
-                        <div class="campus-activity">
-                            <div class="campus-header">
-                                <div>
-                                    <p class="campus-title">Process Scheduler</p>
-                                </div>
-                                <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="6 9 12 15 18 9"></polyline>
-                                </svg>
-                            </div>
-                        <p class="description">
-                        • Cooperative round-robin: <code>yield()</code> scans <code>procs[]</code> for the next <code>PROC_RUNNABLE</code> process with <code>pid &gt; 0</code>
-                        • Idle process (pid=0) created at boot as fallback; kernel panics if execution ever returns to it
-                        • Context switch: naked assembly saves 13 callee-saved registers (<code>ra</code>, <code>s0</code>–<code>s11</code>), swaps <code>sp</code> via <code>sw sp,(a0)</code> / <code>lw sp,(a1)</code>, restores next process's registers
-                        • Per-process 8 KiB kernel stacks embedded in <code>struct process</code>; initial stack frame pre-loaded with <code>user_entry</code> as return address
-                        • <code>satp</code> CSR written on every context switch with <code>SATP_SV32 | (page_table / PAGE_SIZE)</code>, bracketed by <code>sfence.vma</code> TLB flushes
-                        • <code>sscratch</code> updated to each process's kernel stack top so trap entry always finds the correct stack
-                        • Process exit: <code>SYS_EXIT</code> marks state <code>PROC_EXITED</code> and calls <code>yield()</code>; slots reused via <code>PROC_UNUSED</code> check
-                        </p>
-                    
-                        <div class="campus-activity">
-                            <div class="campus-header">
-                                <div>
-                                    <p class="campus-title">Virtual Memory &amp; Paging</p>
-                                </div>
-                                <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="6 9 12 15 18 9"></polyline>
-                                </svg>
-                            </div>
-                        <p class="description">
-                        • Sv32 two-level page table: 10-bit VPN[1] indexes root table, 10-bit VPN[0] indexes leaf PTE — matches RISC-V Sv32 spec exactly
-                        • <code>map_page()</code> allocates a second-level table on demand if root PTE lacks <code>PAGE_V</code>, writes leaf as <code>(paddr/PAGE_SIZE)&lt;&lt;10 | flags | PAGE_V</code>
-                        • Kernel identity-mapped into every process over <code>[__kernel_base, __free_ram_end)</code> with <code>PAGE_R|W|X</code> — allows trap handling without a page table switch
-                        • VirtIO MMIO region (<code>0x10001000</code>) explicitly mapped <code>PAGE_R|W</code> in each process so device registers are accessible from kernel code in any address space
-                        • User binary copied page-by-page from embedded <code>shell.bin.o</code> into physical pages, mapped at <code>USER_BASE = 0x1000000</code> with <code>PAGE_U|R|W|X</code>
-                        • Partial last page handled: copy size clamped to <code>min(PAGE_SIZE, remaining)</code> to avoid over-reading the image
-                        • <code>user_entry</code> naked stub sets <code>sepc = USER_BASE</code>, <code>sstatus.SPIE = 1</code>, executes <code>sret</code> to drop into U-mode
-                        </p>
+                    </div>
 
-                        <div class="campus-activity">
-                            <div class="campus-header">
-                                <div>
-                                    <p class="campus-title">Disk I/O</p>
-                                </div>
-                                <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="6 9 12 15 18 9"></polyline>
-                                </svg>
+                    <div class="campus-activity">
+                        <div class="campus-header">
+                            <div>
+                                <p class="campus-title">Process Scheduler</p>
                             </div>
+                            <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
                         <p class="description">
-                        • VirtIO 1.0 legacy MMIO block driver targeting <code>virtio-blk-device</code> on QEMU bus at <code>0x10001000</code>
-                        • Init sequence: reset → ACK → DRIVER → set page size → init virtqueue → DRIVER_OK; panics on magic/version/device-ID mismatch
-                        • Virtqueue allocated as one physically contiguous page via <code>alloc_pages</code>, written to <code>VIRTIO_REG_QUEUE_PFN</code> as a page frame number; queue size fixed at 16
-                        • <code>virtq_kick()</code> posts descriptor to available ring, increments index, issues <code>__sync_synchronize()</code> barrier, notifies device via <code>VIRTIO_REG_QUEUE_NOTIFY</code>
-                        • <code>virtq_is_busy()</code> polls used ring index against <code>last_used_index</code> for completion without interrupts
-                        • Disk capacity read as 64-bit sector count from <code>VIRTIO_REG_DEVICE_CONFIG</code>; bounds-checked before issuing any request
-                        • MMIO accessors use <code>volatile</code> pointer casts; all structs marked <code>__attribute__((packed))</code>
+                            • Cooperative round-robin: <code>yield()</code> scans <code>procs[]</code> for the next <code>PROC_RUNNABLE</code> process with <code>pid &gt; 0</code>
+                            • Idle process (pid=0) created at boot as fallback; kernel panics if execution ever returns to it
+                            • Context switch: naked assembly saves 13 callee-saved registers (<code>ra</code>, <code>s0</code>–<code>s11</code>), swaps <code>sp</code> via <code>sw sp,(a0)</code> / <code>lw sp,(a1)</code>, restores next process's registers
+                            • Per-process 8 KiB kernel stacks embedded in <code>struct process</code>; initial stack frame pre-loaded with <code>user_entry</code> as return address
+                            • <code>satp</code> CSR written on every context switch with <code>SATP_SV32 | (page_table / PAGE_SIZE)</code>, bracketed by <code>sfence.vma</code> TLB flushes
+                            • <code>sscratch</code> updated to each process's kernel stack top so trap entry always finds the correct stack
+                            • Process exit: <code>SYS_EXIT</code> marks state <code>PROC_EXITED</code> and calls <code>yield()</code>; slots reused via <code>PROC_UNUSED</code> check
                         </p>
-                    
                     </div>
+
+                    <div class="campus-activity">
+                        <div class="campus-header">
+                            <div>
+                                <p class="campus-title">Virtual Memory &amp; Paging</p>
+                            </div>
+                            <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                        <p class="description">
+                            • Sv32 two-level page table: 10-bit VPN[1] indexes root table, 10-bit VPN[0] indexes leaf PTE — matches RISC-V Sv32 spec exactly
+                            • <code>map_page()</code> allocates a second-level table on demand if root PTE lacks <code>PAGE_V</code>, writes leaf as <code>(paddr/PAGE_SIZE)&lt;&lt;10 | flags | PAGE_V</code>
+                            • Kernel identity-mapped into every process over <code>[__kernel_base, __free_ram_end)</code> with <code>PAGE_R|W|X</code> — allows trap handling without a page table switch
+                            • VirtIO MMIO region (<code>0x10001000</code>) explicitly mapped <code>PAGE_R|W</code> in each process so device registers are accessible from kernel code in any address space
+                            • User binary copied page-by-page from embedded <code>shell.bin.o</code> into physical pages, mapped at <code>USER_BASE = 0x1000000</code> with <code>PAGE_U|R|W|X</code>
+                            • Partial last page handled: copy size clamped to <code>min(PAGE_SIZE, remaining)</code> to avoid over-reading the image
+                            • <code>user_entry</code> naked stub sets <code>sepc = USER_BASE</code>, <code>sstatus.SPIE = 1</code>, executes <code>sret</code> to drop into U-mode
+                        </p>
                     </div>
+
+                    <div class="campus-activity">
+                        <div class="campus-header">
+                            <div>
+                                <p class="campus-title">Disk I/O &amp; File System</p>
+                            </div>
+                            <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                        <p class="description">
+                            • VirtIO 1.0 legacy MMIO block driver targeting <code>virtio-blk-device</code> on QEMU bus at <code>0x10001000</code>
+                            • Init sequence: reset → ACK → DRIVER → set page size → init virtqueue → DRIVER_OK; panics on magic/version/device-ID mismatch
+                            • Virtqueue allocated as one physically contiguous page via <code>alloc_pages</code>, written to <code>VIRTIO_REG_QUEUE_PFN</code> as a page frame number; queue size fixed at 16
+                            • <code>virtq_kick()</code> posts descriptor to available ring, increments index, issues <code>__sync_synchronize()</code> barrier, notifies device via <code>VIRTIO_REG_QUEUE_NOTIFY</code>
+                            • <code>virtq_is_busy()</code> polls used ring index against <code>last_used_index</code> for completion without interrupts
+                            • Disk capacity read as 64-bit sector count from <code>VIRTIO_REG_DEVICE_CONFIG</code>; bounds-checked before issuing any request
+                            • Tar-based file system layered on top of the block driver for reading embedded files at boot
+                            • MMIO accessors use <code>volatile</code> pointer casts; all structs marked <code>__attribute__((packed))</code>
+                        </p>
                     </div>
-                </div>
                 </div>
 
                 <div class="project">
                     <div class="project-header">
                         <div>
-                            <p class="project-title">Scheme Interpreter & Language Implementation</p>
+                            <p class="project-title">Scheme Interpreter &amp; Language Implementation</p>
                             <p class="date">Oct 2025 – Nov 2025</p>
                         </div>
                         <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -669,14 +571,12 @@
                     </div>
                     <p class="description">
                         • Engineered a complete Scheme interpreter from scratch in Racket implementing programming language theory fundamentals
-                        • Developed recursive-descent parser transforming S-expressions into abstract syntax trees with syntax expansion phase
-                        • Implemented lexical scoping with environment model supporting closures, first-class functions, and proper tail recursion
+                        • Developed a recursive-descent parser transforming S-expressions into abstract syntax trees with a syntax expansion phase
+                        • Implemented lexical scoping with an environment model supporting closures, first-class functions, and proper tail recursion
                         • Built comprehensive syntactic forms including lambda, let/let*/letrec, cond, set!, define, and, or, begin
-                        Co-Authored by Ethan Schurr
+                        • Co-authored with Ethan Schurr
                     </p>
                 </div>
-
-                
 
                 <div class="project">
                     <div class="project-header">
@@ -690,13 +590,11 @@
                         </svg>
                     </div>
                     <p class="description">
-                        • Simulated radiation-hardened semiconductors using CUDA and PETSC, used parallelization to
-                        reduce processing time
-                        • Developed a new testing framework and performed GPU hardware analysis to recommend cost
-                        effective hardware solutions
+                        • Simulated radiation-hardened semiconductors using CUDA and PETSc (including Argonne National Lab's linear solver), using parallelization to reduce processing time
+                        • Modified and wrote software enabling fuller CUDA utilization, improved testing, and full simulation test cases, achieving a 97% speed improvement
+                        • Developed a new testing framework and performed GPU hardware analysis to recommend cost-effective hardware solutions
                         • <a href="https://www.jrcisi.com/radiation-analysis-and-design-software-tools" target="_blank"
                             rel="noopener noreferrer" class="more-info-link">View JRC Integrated Systems Information↗</a>
-
                     </p>
                 </div>
 
@@ -704,7 +602,7 @@
                     <div class="project-header">
                         <div>
                             <p class="project-title">Battery Management Systems</p>
-                            <p class="date">Aug 2024 – Jan 2025</p>
+                            <p class="date">Aug 2024 – Jun 2025</p>
                         </div>
                         <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -712,47 +610,14 @@
                         </svg>
                     </div>
                     <p class="description">
-
-                        • Worked under the Battery Management System team for the Rose-Hulman Battery Workforce
-                        Challenge team.
-                        • Worked with Simulink, coded controls and response for electric vehicle pre-charging and
-                        crash detection
+                        • Worked under the Battery Management System team for the Rose-Hulman Battery Workforce Challenge team
+                        • Worked with Simulink, coding controls and response for electric vehicle pre-charging and crash detection
                         • Utilized serial communication with microcontrollers
                         • <a href="https://avtcseries.org/about-the-battery-workforce-challenge/" target="_blank"
                             rel="noopener noreferrer" class="more-info-link">More Info</a>
                     </p>
                 </div>
 
-                <!-- <div class="project">
-                    <div class="project-header">
-                        <div>
-                            <p class="project-title">Pipelined RISC-V Processor</p>
-                            <p class="date">Dec 2024 – Feb 2025</p>
-                        </div>
-                        <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
-                    </div>
-                    <p class="description">
-                        • Implemented a RISC-V processor in Verilog, evolving from single-cycle to pipelined
-                        architecture
-                        • Added branch/jump handling with decode-stage detection and pipeline flushing
-                        • Designed and integrated stall detection and data forwarding units to resolve hazards
-                        • Verified correctness with custom testbenches and benchmarked
-                        <code>gcd</code>/<code>relPrime</code> programs
-                        • Created and integrated a custom <code>gcd</code> instruction, eliminating branching and loops
-                        by computing directly in hardware
-                        • Reduced relPrime runtime from 172 → 58 cycles (n=6), 51,151 → 124 cycles (n=5040), and 366,757
-                        → 200 cycles (n=30030)
-                        • Achieved extreme scalability: estimated reduction from ~4.98×10<sup>12</sup> → 317 cycles for
-                        n=223,092,870 (most difficult relative prime number testable on the register size)
-                        • Demonstrated speedups exceeding <strong>10<sup>10</sup>×</strong> while improving readability,
-                        predictability, and hardware efficiency
-                        • <a href="https://github.com/rhit-csse232/rhit-csse232-2425b-pipe-tulip-2425b-pipe-02"
-                            target="_blank" rel="noopener noreferrer" class="more-info-link">View GitHub Repository↗</a>
-                    </p>
-                </div> -->
                 <div class="project">
                     <div class="project-header">
                         <div>
@@ -765,88 +630,58 @@
                         </svg>
                     </div>
                     <div class="description">
-                        <div class="processor-visualization">
-                            <div class="processor-diagram">
-                                <h3>Pipeline Architecture:</h3>
-                                <img src="images/png2.svg" alt="RISC-V Processor Pipeline Diagram" class="diagram-img">
-                                <p class="diagram-caption">5-stage pipelined RISC-V architecture with hazard detection
-                                </p>
-                            </div>
-                            <div class="feature-highlights">
-                                <h3>Key Features:</h3>
-                                <ul>
-                                    <p><strong>5-Stage Pipeline:</strong> IF, ID, EX, MEM, WB with full forwarding </p>
-                                    <p><strong>Hazard Handling:</strong> Advanced data forwarding and stall detection
-                                    </p>
-                                    <p><strong>Extended ISA:</strong> Custom GCD instruction for hardware acceleration
-                                    </p>
-                                    <p><strong>Memory-Mapped I/O:</strong> Integrated input/output system </p>
-                                    <p><strong>Branch Prediction:</strong> Early branch resolution in decode stage </p>
-                                </ul>
-                            </div>
-                            <div class="performance-comparison">
-                                <h3>Waveform Analysis:</h3>
-                                <img src="https://via.placeholder.com/800x300/2d2d2d/00e1ff?text=Waveform+Analysis+Showing+Pipeline+Execution"
-                                    alt="Waveform analysis of pipeline execution" class="chart-img">
-                                <p class="diagram-caption">GTKWave simulation showing pipeline execution and hazard
-                                    handling</p>
-                            </div>
-                            <div class="technical-details">
-                                <h3>Technical Implementation:</h3>
-                                <div class="detail-grid">
-                                    <div class="detail-item">
-                                        <h4>Pipeline Control</h4> Implemented full forwarding unit with EX/MEM and
-                                        MEM/WB stage forwarding
-                                    </div>
-                                    <div class="detail-item">
-                                        <h4>Hazard Detection</h4> Designed stall logic for load-use hazards and control
-                                        hazards
-                                    </div>
-                                    <div class="detail-item">
-                                        <h4>Custom ALU</h4> Extended ALU with GCD and MUL operations beyond standard
-                                        RISC-V
-                                    </div>
-                                    <div class="detail-item">
-                                        <h4>Verification</h4> Comprehensive testbenches with custom vUnit testing
-                                        framework
-                                    </div>
+                        <div class="processor-diagram">
+                            <h3>Pipeline Architecture:</h3>
+                            <img src="images/png2.svg" alt="RISC-V Processor Pipeline Diagram" class="diagram-img">
+                            <p class="diagram-caption">5-stage pipelined RISC-V architecture with hazard detection</p>
+                        </div>
+                        <div class="feature-highlights">
+                            <h3>Key Features:</h3>
+                            <ul>
+                                <li><strong>5-Stage Pipeline:</strong> IF, ID, EX, MEM, WB with full forwarding</li>
+                                <li><strong>Hazard Handling:</strong> Advanced data forwarding and stall detection</li>
+                                <li><strong>Extended ISA:</strong> Custom GCD instruction for hardware acceleration</li>
+                                <li><strong>Memory-Mapped I/O:</strong> Integrated input/output system</li>
+                                <li><strong>Branch Prediction:</strong> Early branch resolution in decode stage</li>
+                            </ul>
+                        </div>
+                        <div class="technical-details">
+                            <h3>Technical Implementation:</h3>
+                            <div class="detail-grid">
+                                <div class="detail-item">
+                                    <h4>Pipeline Control</h4> Implemented full forwarding unit with EX/MEM and MEM/WB stage forwarding
+                                </div>
+                                <div class="detail-item">
+                                    <h4>Hazard Detection</h4> Designed stall logic for load-use hazards and control hazards
+                                </div>
+                                <div class="detail-item">
+                                    <h4>Custom ALU</h4> Extended ALU with GCD and MUL operations beyond standard RISC-V
+                                </div>
+                                <div class="detail-item">
+                                    <h4>Verification</h4> Comprehensive testbenches with a custom vUnit testing framework
                                 </div>
                             </div>
-                            <div class="achievements">
-                                <h3>Achievements:</h3>
-                                <ul>
-                                    <li>Implemented a RISC-V processor in Verilog, evolving from single-cycle to
-                                        pipelined architecture</li>
-                                    <li>Added branch/jump handling with decode-stage detection and pipeline flushing
-                                    </li>
-                                    <li>Designed and integrated stall detection and data forwarding units to resolve
-                                        hazards</li>
-                                    <li>Verified correctness with custom testbenches and benchmarked
-                                        <code>gcd</code>/<code>relPrime</code> programs
-                                    </li>
-                                    <li>Created and integrated a custom <code>gcd</code> instruction, eliminating
-                                        branching and loops by computing directly in hardware</li>
-                                    <li>Reduced relPrime runtime from 172 → 58 cycles (n=6), 51,151 → 124 cycles
-                                        (n=5040), and 366,757 → 200 cycles (n=30030)</li>
-                                    <li>Achieved extreme scalability: estimated reduction from ~3.98×10<sup>12</sup> →
-                                        317 cycles for n=223,092,870</li>
-                                    <li>Demonstrated speedups exceeding <strong>10<sup>10</sup>×</strong> while
-                                        improving readability, predictability, and hardware efficiency</li>
-                                </ul>
-                            </div>
-                            <!-- - <a href="https://github.com/rhit-csse232/rhit-csse232-2425b-pipe-tulip-2425b-pipe-02"
-                                target="_blank" rel="noopener noreferrer" class="more-info-link">View GitHub
-                                Repository↗</a> -->
-
+                        </div>
+                        <div class="achievements">
+                            <h3>Achievements:</h3>
+                            <ul>
+                                <li>Implemented a RISC-V processor in Verilog, evolving from single-cycle to pipelined architecture</li>
+                                <li>Added branch/jump handling with decode-stage detection and pipeline flushing</li>
+                                <li>Designed and integrated stall detection and data forwarding units to resolve hazards</li>
+                                <li>Verified correctness with custom testbenches and benchmarked <code>gcd</code>/<code>relPrime</code> programs</li>
+                                <li>Created and integrated a custom <code>gcd</code> instruction, eliminating branching and loops by computing directly in hardware</li>
+                                <li>Reduced relPrime runtime from 172 → 58 cycles (n=6), 51,151 → 124 cycles (n=5040), and 366,757 → 200 cycles (n=30030)</li>
+                                <li>Achieved a 99.95% cycle reduction on the most demanding benchmark, an estimated drop from ~3.98×10<sup>12</sup> → 317 cycles for n=223,092,870</li>
+                                <li>Demonstrated speedups exceeding <strong>10<sup>10</sup>×</strong> while improving readability, predictability, and hardware efficiency</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
 
-
                 <div class="project">
                     <div class="project-header">
                         <div>
-                            <p class="project-title">Infrared-Seeking Missile Control System (Project Leader)</p>
+                            <p class="project-title">Infrared-Seeking Missile Control System (Project Lead)</p>
                             <p class="date">Jan 2025 – Feb 2025</p>
                         </div>
                         <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -855,21 +690,17 @@
                         </svg>
                     </div>
                     <p class="description">
-                        • Developed real-time infrared tracking missile prototype using MSP432 microcontroller with
-                        autonomous target acquisition
-                        • Designed servo-controlled guidance system with 4 independent fins achieving sub 100ms response
-                        time and 5% angle accuracy
-                        • Implemented state machine logic (Base→Armed→Fire) with audio/visual feedback and
-                        proximity-based detonation
-                        • Optimized IR signal processing with rotating optical assembly (stepper motor + photodiode +
-                        concave mirror)
-                        • Achieved warhead trigger latency of 130μs and ignition response within 1ms through
-                        hardware-software co-design
-                        • Integrated serial communication interface and backup button redundancy for robust control
+                        • Directed development of a real-time infrared tracking missile prototype using the MSP432 microcontroller with autonomous target acquisition
+                        • Designed a servo-controlled guidance system with 4 independent fins achieving sub-50ms response time and 5% angle accuracy
+                        • Implemented state machine logic (Base→Armed→Fire) with audio/visual feedback and proximity-based detonation
+                        • Optimized IR signal processing with a rotating optical assembly (stepper motor + photodiode + concave mirror)
+                        • Achieved warhead trigger latency of 130μs and ignition response within 1ms through hardware-software co-design
+                        • Integrated a serial communication interface and backup button redundancy for robust control
                         • <a href="https://github.com/rhit-tanseyjr/ECE-230-Final-Project" target="_blank"
                             rel="noopener noreferrer" class="more-info-link">View GitHub Repository↗</a>
                     </p>
                 </div>
+
                 <div class="project">
                     <div class="project-header">
                         <div>
@@ -882,71 +713,52 @@
                         </svg>
                     </div>
                     <div class="description">
-                        <div class="assembler-details">
-                            <div class="feature-highlights">
-                                <h3>Core Features:</h3>
-                                <ul>
-                                    <li><strong>Complete RISC-V Support:</strong> Full implementation of R, I, S, SB, U,
-                                        and UJ instruction types</li>
-                                    <li><strong>Label Resolution:</strong> Automatic address calculation and branch/jump
-                                        target resolution</li>
-                                    <li><strong>Pseudoinstruction Framework:</strong> Extensible system for custom
-                                        instruction macros</li>
-                                    <li><strong>Multi-format Output:</strong> Binary, hexadecimal, and annotated
-                                        assembly output modes</li>
-                                    <li><strong>Comprehensive Error Handling:</strong> Detailed exception system for
-                                        debugging invalid assembly</li>
-                                </ul>
-                            </div>
-
-                            <div class="technical-details">
-                                <h3>Technical Implementation:</h3>
-                                <div class="detail-grid">
-                                    <div class="detail-item">
-                                        <h4>Multi-Pass Architecture</h4>
-                                        Four-pass design: comment removal, pseudoinstruction expansion, label parsing,
-                                        and machine code generation
-                                    </div>
-                                    <div class="detail-item">
-                                        <h4>Instruction Encoding</h4>
-                                        Precise bit-field manipulation for all RISC-V instruction formats with two's
-                                        complement immediate handling
-                                    </div>
-                                    <div class="detail-item">
-                                        <h4>Address Resolution</h4>
-                                        PC-relative addressing with automatic offset calculation for branches and jumps
-                                    </div>
-                                    <div class="detail-item">
-                                        <h4>Register Mapping</h4>
-                                        Complete register alias support (x0-x31, ra, sp, t0-t6, s0-s11, a0-a7, etc.)
-                                    </div>
+                        <div class="feature-highlights">
+                            <h3>Core Features:</h3>
+                            <ul>
+                                <li><strong>Complete RISC-V Support:</strong> Full implementation of R, I, S, SB, U, and UJ instruction types</li>
+                                <li><strong>Label Resolution:</strong> Automatic address calculation and branch/jump target resolution</li>
+                                <li><strong>Pseudoinstruction Framework:</strong> Extensible system for custom instruction macros</li>
+                                <li><strong>Multi-format Output:</strong> Binary, hexadecimal, and annotated assembly output modes</li>
+                                <li><strong>Comprehensive Error Handling:</strong> Detailed exception system for debugging invalid assembly</li>
+                            </ul>
+                        </div>
+                        <div class="technical-details">
+                            <h3>Technical Implementation:</h3>
+                            <div class="detail-grid">
+                                <div class="detail-item">
+                                    <h4>Multi-Pass Architecture</h4>
+                                    Four-pass design: comment removal, pseudoinstruction expansion, label parsing, and machine code generation
+                                </div>
+                                <div class="detail-item">
+                                    <h4>Instruction Encoding</h4>
+                                    Precise bit-field manipulation for all RISC-V instruction formats with two's complement immediate handling
+                                </div>
+                                <div class="detail-item">
+                                    <h4>Address Resolution</h4>
+                                    PC-relative addressing with automatic offset calculation for branches and jumps
+                                </div>
+                                <div class="detail-item">
+                                    <h4>Register Mapping</h4>
+                                    Complete register alias support (x0-x31, ra, sp, t0-t6, s0-s11, a0-a7, etc.)
                                 </div>
                             </div>
-
-                            <div class="achievements">
-                                <h3>Key Achievements:</h3>
-                                <ul>
-                                    <li>Developed complete 32-bit RISC-V assembler supporting all major instruction
-                                        types</li>
-                                    <li>Implemented sophisticated label resolution system with forward reference support
-                                    </li>
-                                    <li>Created extensible pseudoinstruction framework allowing custom macro definitions
-                                    </li>
-                                    <li>Built comprehensive error handling with specific exception types (BadImmediate,
-                                        BadRegister, BadLabel, etc.)</li>
-                                    <li>Designed multi-format output system with debugging annotations and address
-                                        mapping</li>
-                                    <li>Achieved full compatibility with standard RISC-V assembly syntax including
-                                        base-offset addressing</li>
-                                    <li>Implemented robust two's complement arithmetic for immediate value encoding</li>
-                                    <li>Created modular architecture enabling easy extension for additional instruction
-                                        sets</li>
-                                </ul>
-                            </div>
-
-                            <div class="project-links">
-                                <a href="./assembler.py" download="assembler.py">Download Source Code</a>
-                            </div>
+                        </div>
+                        <div class="achievements">
+                            <h3>Key Achievements:</h3>
+                            <ul>
+                                <li>Developed a complete 32-bit RISC-V assembler supporting all major instruction types</li>
+                                <li>Implemented a sophisticated label resolution system with forward reference support</li>
+                                <li>Created an extensible pseudoinstruction framework allowing custom macro definitions</li>
+                                <li>Built comprehensive error handling with specific exception types (BadImmediate, BadRegister, BadLabel, etc.)</li>
+                                <li>Designed a multi-format output system with debugging annotations and address mapping</li>
+                                <li>Achieved full compatibility with standard RISC-V assembly syntax including base-offset addressing</li>
+                                <li>Implemented robust two's complement arithmetic for immediate value encoding</li>
+                                <li>Created a modular architecture enabling easy extension for additional instruction sets</li>
+                            </ul>
+                        </div>
+                        <div class="project-links">
+                            <a href="./assembler.py" download="assembler.py">Download Source Code</a>
                         </div>
                     </div>
                 </div>
@@ -954,7 +766,7 @@
                 <div class="project">
                     <div class="project-header">
                         <div>
-                            <p class="project-title">Genetic Algorithm Research (Project Leader)</p>
+                            <p class="project-title">Genetic Algorithm Research (Project Lead)</p>
                             <p class="date">Aug 2024 – Nov 2024</p>
                         </div>
                         <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -963,25 +775,21 @@
                         </svg>
                     </div>
                     <p class="description">
-                        • Led development of evolutionary simulator implementing genetic algorithms
-                        • Designed and implemented chromosome visualization/editor with mutation, crossover, and selection mechanisms
+                        • Led development of an evolutionary simulator implementing genetic algorithms
+                        • Designed and implemented a chromosome visualization/editor with mutation, crossover, and selection mechanisms
                         • Developed multiple fitness functions (bit counting, target matching, consecutive 1s) and selection algorithms
-                        • Created GUI-based evolution simulator with real-time population visualization and statistical analysis
+                        • Created a GUI-based evolution simulator with real-time population visualization and statistical analysis
                         • Implemented truncation, roulette wheel, and ranked selection methods with comparative performance analysis
                         • Conducted experiments demonstrating genetic algorithm behavior across different parameter configurations
-                        • Successfully reproduced results from <a
-                            href="https://pages.ucsd.edu/~rbelew/courses/cogs184_w10/readings/HintonNowlan97.pdf"
-                            target="_blank" rel="noopener noreferrer">"How Learning Can Guide Evolution"</a> scientific paper
+                        • Successfully reproduced results from a well-known scientific paper on how learning can guide evolution (Hinton & Nowlan, 1987)
                         • Utilized object-oriented design principles with inheritance for selection methods and interfaces for fitness functions
-                        <!-- • <a href="https://github.com/rhit-csse220/csse220-fall-2024-2025-final-project-f24_r203"
-                            target="_blank" rel="noopener noreferrer" class="more-info-link">View Project Details ↗</a> -->
                     </p>
                 </div>
 
                 <div class="project">
                     <div class="project-header">
                         <div>
-                            <p class="project-title">Communication & Network Projects</p>
+                            <p class="project-title">Communication &amp; Network Projects</p>
                             <p class="date">Sep 2025 – Oct 2025</p>
                         </div>
                         <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -990,175 +798,112 @@
                         </svg>
                     </div>
                     <div class="description">
-                        <div class="protocol-stack-overview">
-                            <h3>Overview</h3>
-                            <p>Implementation of two network communication systems including a TCP-based chat
-                                application and custom UDP-based protocol stack with packet encapsulation. Co-Authored
-                                by Elliot Rodgers</p>
+                        <p>Implementation of two network communication systems: a TCP-based chat application and a custom UDP-based protocol stack with packet encapsulation. Co-authored with Elliot Rodgers.</p>
 
-                            <!-- <div class="protocol-diagram">
-                                <h4>Protocol Stack Architecture:</h4>
-                                <img src="https://via.placeholder.com/800x200/2d2d2d/00e1ff?text=Protocol+Stack+Diagram"
-                                    alt="Network Protocol Stack Diagram" class="diagram-img">
-                                <p class="diagram-caption">Custom protocol stack implementation with RHP and RHMP
-                                    layers over UDP transport</p>
-                            </div> -->
-
-                            <div class="project-components">
-                                <h3>Project Components</h3>
-                                <div class="component">
-                                    <h4>TCP Socket Chat Application</h4>
-                                    <div class="detail-grid">
-                                        <div class="detail-item">
-                                            <h5>Client-Server Architecture</h5>
-                                            Implemented bidirectional real-time messaging with multithreaded design
-                                        </div>
-                                        <div class="detail-item">
-                                            <h5>User Authentication</h5>
-                                            Dynamic username exchange and connection establishment protocol
-                                        </div>
-                                        <div class="detail-item">
-                                            <h5>Concurrent Processing</h5>
-                                            POSIX threads for simultaneous send/receive operations
-                                        </div>
-                                        <div class="detail-item">
-                                            <h5>Connection Management</h5>
-                                            Graceful connection termination with 'quit' command handling
-                                        </div>
-                                    </div>
-                                    <div class="code-samples">
-                                        <h5>Key Implementation Features:</h5>
-                                        <ul>
-                                            <li><strong>Socket Programming:</strong> TCP stream sockets with proper
-                                                connection lifecycle management</li>
-                                            <li><strong>Multithreading:</strong> Separate threads for sending and
-                                                receiving messages</li>
-                                            <li><strong>Message Protocol:</strong> Custom NAME: prefix for username
-                                                exchange</li>
-                                            <li><strong>Error Handling:</strong> Comprehensive error checking and
-                                                graceful degradation</li>
-                                            <li><strong>Platform Compatibility:</strong> Cross-platform support for
-                                                UNIX/Linux environments</li>
-                                        </ul>
-                                    </div>
+                        <div class="feature-highlights">
+                            <h3>TCP Socket Chat Application</h3>
+                            <div class="detail-grid">
+                                <div class="detail-item">
+                                    <h5>Client-Server Architecture</h5>
+                                    Implemented bidirectional real-time messaging with a multithreaded design
                                 </div>
-                                <div class="component">
-                                    <h4>Custom Protocol Stack (RHP/RHMP)</h4>
-                                    <div class="detail-grid">
-                                        <div class="detail-item">
-                                            <h5>Rose-Hulman Protocol (RHP)</h5>
-                                            Transport layer protocol with version control, port addressing, and
-                                            checksum verification
-                                        </div>
-                                        <div class="detail-item">
-                                            <h5>Rose-Hulman Message Protocol (RHMP)</h5>
-                                            Application layer protocol with message and ID request/response
-                                            capabilities
-                                        </div>
-                                        <div class="detail-item">
-                                            <h5>Packet Encapsulation</h5>
-                                            Proper layering with RHMP encapsulated within RHP packets
-                                        </div>
-                                        <div class="detail-item">
-                                            <h5>Checksum Validation</h5>
-                                            Internet checksum implementation with retry mechanisms
-                                        </div>
-                                    </div>
-
-                                    <div class="protocol-details">
-                                        <h5>Protocol Specifications:</h5>
-                                        <ul>
-                                            <li><strong>RHP Header:</strong> 8-bit version, 16-bit
-                                                source/destination ports, 12-bit length, 4-bit type</li>
-                                            <li><strong>RHMP Header:</strong> 14-bit communication ID, 6-bit type,
-                                                12-bit length</li>
-                                            <li><strong>Message Types:</strong> Control messages,
-                                                Message_Request/Response, ID_Request/Response</li>
-                                            <li><strong>Error Handling:</strong> Checksum verification with
-                                                automatic retransmission</li>
-                                        </ul>
-                                    </div>
+                                <div class="detail-item">
+                                    <h5>User Authentication</h5>
+                                    Dynamic username exchange and connection establishment protocol
+                                </div>
+                                <div class="detail-item">
+                                    <h5>Concurrent Processing</h5>
+                                    POSIX threads for simultaneous send/receive operations
+                                </div>
+                                <div class="detail-item">
+                                    <h5>Connection Management</h5>
+                                    Graceful connection termination with 'quit' command handling
                                 </div>
                             </div>
-                            <div class="technical-implementation">
-                                <h3>Technical Implementation</h3>
+                        </div>
 
-                                <div class="implementation-details">
-                                    <div class="detail-item">
-                                        <h4>Socket Management</h4>
-                                        <ul>
-                                            <li>TCP sockets for reliable chat communication (SOCK_STREAM)</li>
-                                            <li>UDP sockets for custom protocol implementation (SOCK_DGRAM)</li>
-                                            <li>Proper socket binding, listening, and connection acceptance</li>
-                                            <li>Graceful socket shutdown and resource cleanup</li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="detail-item">
-                                        <h4>Packet Construction</h4>
-                                        <ul>
-                                            <li>Bit-level packet header construction with proper endianness</li>
-                                            <li>Internet checksum calculation using one's complement</li>
-                                            <li>Dynamic payload handling with proper padding for alignment</li>
-                                            <li>Protocol field encoding/decoding with bit manipulation</li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="detail-item">
-                                        <h4>Threading Architecture</h4>
-                                        <ul>
-                                            <li>POSIX threads for concurrent message handling</li>
-                                            <li>Proper thread synchronization and resource sharing</li>
-                                            <li>Clean thread termination on application exit</li>
-                                            <li>Non-blocking I/O with proper buffer management</li>
-                                        </ul>
-                                    </div>
+                        <div class="feature-highlights">
+                            <h3>Custom Protocol Stack (RHP/RHMP)</h3>
+                            <div class="detail-grid">
+                                <div class="detail-item">
+                                    <h5>Rose-Hulman Protocol (RHP)</h5>
+                                    Transport layer protocol with version control, port addressing, and checksum verification
+                                </div>
+                                <div class="detail-item">
+                                    <h5>Rose-Hulman Message Protocol (RHMP)</h5>
+                                    Application layer protocol with message and ID request/response capabilities
+                                </div>
+                                <div class="detail-item">
+                                    <h5>Packet Encapsulation</h5>
+                                    Proper layering with RHMP encapsulated within RHP packets
+                                </div>
+                                <div class="detail-item">
+                                    <h5>Checksum Validation</h5>
+                                    Internet checksum implementation with retry mechanisms
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="achievements">
-                                <h3>Key Achievements</h3>
-                                <ul>
-                                    <li>Successfully implemented a complete client-server chat application with
-                                        real-time bidirectional communication</li>
-                                    <li>Designed and implemented custom network protocols (RHP/RHMP) from
-                                        specification</li>
-                                    <li>Implemented robust error handling with checksum verification and automatic
-                                        retransmission</li>
-                                    <li>Achieved proper packet encapsulation with layered protocol architecture</li>
-                                    <li>Developed comprehensive testing framework with server response validation
-                                    </li>
-                                    <li>Created modular, well-documented code following networking best practices
-                                    </li>
-                                    <li>Demonstrated understanding of TCP vs UDP tradeoffs in different application
-                                        scenarios</li>
-                                </ul>
-                            </div>
+                        <div class="achievements">
+                            <h3>Key Achievements</h3>
+                            <ul>
+                                <li>Successfully implemented a complete client-server chat application with real-time bidirectional communication</li>
+                                <li>Designed and implemented custom network protocols (RHP/RHMP) from specification</li>
+                                <li>Implemented robust error handling with checksum verification and automatic retransmission</li>
+                                <li>Achieved proper packet encapsulation with a layered protocol architecture</li>
+                                <li>Developed a comprehensive testing framework with server response validation</li>
+                                <li>Demonstrated understanding of TCP vs UDP tradeoffs in different application scenarios</li>
+                            </ul>
+                        </div>
 
-                            <div class="project-links">
-                                <a href="https://github.com/rhit-tanseyjr/ece312-project-1-f2025-2026/tree/main"
-                                    target="_blank" rel="noopener noreferrer">View Socket Chat Repository</a>
-                                <a href="https://github.com/rhit-tanseyjr/ece312-project-2-f2025-2026" target="_blank"
-                                    rel="noopener noreferrer">View Protocol Messaging Repository</a>
-
-                            </div>
+                        <div class="project-links">
+                            <a href="https://github.com/rhit-tanseyjr/ece312-project-1-f2025-2026/tree/main"
+                                target="_blank" rel="noopener noreferrer">View Socket Chat Repository</a>
+                            <a href="https://github.com/rhit-tanseyjr/ece312-project-2-f2025-2026" target="_blank"
+                                rel="noopener noreferrer">View Protocol Messaging Repository</a>
                         </div>
                     </div>
                 </div>
             </section>
 
-
             <section id="work-experience" aria-label="Work Experience">
                 <h2>Work Experience</h2>
+
                 <div class="job">
                     <div class="job-header">
                         <div>
                             <p class="job-title">Software Engineering Intern</p>
                             <p class="company">V2X, Indianapolis, IN</p>
-                            <p class="date">June 1 2026</p>
+                            <p class="date">May 2026 – Present</p>
                         </div>
+                        <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
                     </div>
+                    <p class="description">
+                        • Software engineering internship
+                    </p>
                 </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div>
+                            <p class="job-title">Co-Founder</p>
+                            <p class="company">Fafnir Aerospace, Indianapolis, IN</p>
+                            <p class="date">Apr 2026 – Present</p>
+                        </div>
+                        <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <p class="description">
+                        • Co-founded a defense &amp; aerospace startup developing proprietary wireless communication technologies for contested, jamming-prone environments
+                        • Lead integration and electronics hardware design as CTO
+                    </p>
+                </div>
+
                 <div class="job">
                     <div class="job-header">
                         <div>
@@ -1172,16 +917,17 @@
                         </svg>
                     </div>
                     <p class="description">
-                        • Software work on radiation hardened electronics simulation and parallelization
-                        • Semiconductors, Argonne linear solver addition, CUDA, server-side optimizations
+                        • Developed radiation-hardened semiconductor simulation systems utilizing Argonne National Lab's linear solver PETSc
+                        • Modified and wrote software to enable CUDA utilization and parallelization, improved testing, wrote full simulation test cases, and furthered optimization, achieving a 97% speed improvement
                     </p>
                 </div>
+
                 <div class="job">
                     <div class="job-header">
                         <div>
                             <p class="job-title">Software Engineering Intern</p>
                             <p class="company">YolBe, Chicago, IL</p>
-                            <p class="date">May 2024 - Aug 2024</p>
+                            <p class="date">May 2024 – Aug 2024</p>
                         </div>
                         <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1189,30 +935,36 @@
                         </svg>
                     </div>
                     <p class="description">
-                        • Tested and fixed bugs, coded SQL queries to analyze user activity
-                        • Constructed dashboards and analytical reports using Redash and Mixpanel
+                        • Authored SQL queries to analyze user activity patterns and platform engagement across 2,000+ users, identifying key engagement metrics that informed project decisions
+                        • Uncovered a 47% drop in user activity in the onboarding process, which prompted a user experience redesign
+                        • Developed a data visualization dashboard tracking 20 real-time metrics on user behavior using Redash and Mixpanel
                         • Engineered prompts for company AI
-                        • Performed analysis on analytics and user engagement
                     </p>
                 </div>
             </section>
+
             <section id="more-info-section" aria-label="More Info">
                 <h2>More Info</h2>
                 <p><strong>Education:</strong> Bachelor of Science, Computer Engineering, Rose-Hulman Institute of
                     Technology (Expected May 2027)</p>
-                <p></p> GPA 3.48/4.0</p>
-                <p>3x Dean's List </p>
-                <p><strong>Relevant Courses:</strong>Programming Language Concepts, Embedded Systems, Operating Systems,
-                    Computer Architecture, Linear Control Systems, Advanced Microcomputers, AC Circuits, Digital
-                    Systems, Signal Processing, OOP, Data Structures & Algorithms,
-                    Signals and Systems, Intro to Semiconductor Physics, High Speed Digital Design, </p>
+                <p>GPA 3.5/4.0 &middot; Minor in Software Engineering</p>
+                <p>7x Dean's List</p>
+                <p><strong>Relevant Courses:</strong> Operating Systems, Computer Architecture II, Programming
+                    Language Concepts, Embedded Systems, Advanced Microcomputers, Linear Control Systems, AC Circuits,
+                    Digital Systems, Signal Processing, Continuous-Time Signals and Systems, Object-Oriented
+                    Software Development, Data Structures &amp; Algorithms, Intro to Semiconductor Physics,
+                    Electronic Device Modeling, High Speed Digital Design</p>
+                <p><strong>Certifications:</strong> Project Management Essentials Certified, Lean Six Sigma White
+                    Belt Certified &mdash; Management &amp; Strategy Institute (Dec 2025)</p>
+
                 <section id="campus-experience" aria-label="Campus Experience">
                     <h2>Campus Experience</h2>
+
                     <div class="campus-activity">
                         <div class="campus-header">
                             <div>
-                                <p class="campus-title">USLI Rocketry Team (NASA Student Launch Initiative)</p>
-                                <p class="date">Mar 2025 – Present</p>
+                                <p class="campus-title">Rose Rocketry &mdash; IREC Program Manager</p>
+                                <p class="date">May 2026 – Present</p>
                             </div>
                             <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1220,14 +972,33 @@
                             </svg>
                         </div>
                         <p class="description">
-                            • Member of Rose-Hulman's NASA Student Launch Initiative team designing and building
-                            high-power rockets
-                            • Contribute to avionics and flight computer systems development
-                            • Participate in system integration and pre-launch testing procedures
-                            • Work on payload design meeting NASA mission requirements
-                            • Prepare documentation and reports for NASA design reviews
+                            • Program Manager for Rose-Hulman's entry to the International Rocket Engineering Competition (IREC)
+                            • Coordinate cross-functional subteams, documentation, and pre-launch testing procedures
+                            • Own overall project timeline and system integration across avionics, payload, and structures
                         </p>
                     </div>
+
+                    <div class="campus-activity">
+                        <div class="campus-header">
+                            <div>
+                                <p class="campus-title">Rose Rocketry &mdash; USLI Payload Team Member</p>
+                                <p class="date">Mar 2025 – May 2026</p>
+                            </div>
+                            <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                        <p class="description">
+                            • Member of Rose-Hulman's NASA Student Launch Initiative (USLI) team designing and building high-power rockets
+                            • Contributed to avionics and flight computer systems development
+                            • Designed and implemented real-time control systems for the payload with integrated sensors, microcontrollers, a debugging user interface, and a custom PCB
+                            • Participated in system integration and pre-launch testing procedures meeting NASA mission requirements
+                            • Prepared documentation and reports for NASA design reviews
+                            • Awarded Outstanding Payload Member by Rose-Hulman Rocketry (May 2026) as the team successfully launched and recovered its full-scale vehicle at USLI finals in Huntsville, AL
+                        </p>
+                    </div>
+
                     <div class="campus-activity">
                         <div class="campus-header">
                             <div>
@@ -1240,13 +1011,10 @@
                             </svg>
                         </div>
                         <p class="description">
-                            • Member of Rose-Hulman's competitive programming team competing in ICPC and other
-                            programming contests
+                            • Member of Rose-Hulman's competitive programming team competing
                             • Regularly practice algorithm problems and participate in team coding competitions
-                            • Focus on developing efficient solutions to complex computational problems under time
-                            constraints
-                            • Collaborated with teammates to solve problems using data structures and advanced
-                            algorithms
+                            • Focus on developing efficient solutions to complex computational problems under time constraints
+                            • Collaborate with teammates to solve problems using data structures and advanced algorithms
                         </p>
                     </div>
 
@@ -1254,7 +1022,7 @@
                         <div class="campus-header">
                             <div>
                                 <p class="campus-title">Battery Workforce Challenge</p>
-                                <p class="date">Mar 2024 – Mar 2025</p>
+                                <p class="date">Aug 2024 – Jun 2025</p>
                             </div>
                             <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1262,13 +1030,10 @@
                             </svg>
                         </div>
                         <p class="description">
-                            • Worked under the Battery Management System team for the Rose-Hulman Battery Workforce
-                            Challenge team
-                            • Developed controls and response systems for electric vehicle pre-charging and crash
-                            detection using Simulink
+                            • Worked under the Battery Management System team for the Rose-Hulman Battery Workforce Challenge team
+                            • Developed controls and response systems for electric vehicle pre-charging and crash detection using Simulink
                             • Implemented serial communication protocols with microcontrollers for battery monitoring
-                            • Collaborated with mechanical and electrical engineering students on integrated system
-                            design
+                            • Collaborated with mechanical and electrical engineering students on integrated system design
                             • <a href="https://avtcseries.org/about-the-battery-workforce-challenge/" target="_blank"
                                 rel="noopener noreferrer" class="more-info-link">More Info</a>
                         </p>
@@ -1286,74 +1051,39 @@
                             </svg>
                         </div>
                         <p class="description">
-                            • Participate in entrepreneurship program focused on technology commercialization
+                            • Participate in an entrepreneurship program focused on technology commercialization
                             • Develop business plans and pitch ideas for innovative tech solutions
                             • Collaborate with students from diverse disciplines to create viable product concepts
                             • Attend workshops on intellectual property, market analysis, and venture funding
                             • Network with industry professionals and successful entrepreneurs
                         </p>
                     </div>
-
-
                 </section>
             </section>
-
-
         </div>
     </main>
 
     <footer>
-        &copy; 2025 John Tansey
+        &copy; 2026 John Tansey
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // campus activities
-            const campusActivities = document.querySelectorAll('.campus-activity');
-            campusActivities.forEach(activity => {
-                const header = activity.querySelector('.campus-header');
-                const description = activity.querySelector('.description');
+            function wireToggle(selector, headerSelector) {
+                document.querySelectorAll(selector).forEach(item => {
+                    const header = item.querySelector(':scope > ' + headerSelector);
+                    const description = item.querySelector(':scope > .description');
+                    if (!header || !description) return;
 
-                header.addEventListener('click', () => {
-                    activity.classList.toggle('active');
-                    if (activity.classList.contains('active')) {
-                        description.style.maxHeight = description.scrollHeight + 'px';
-                    } else {
-                        description.style.maxHeight = '0';
-                    }
+                    header.addEventListener('click', () => {
+                        item.classList.toggle('active');
+                    });
                 });
-            });
-            // projects
-            const projects = document.querySelectorAll('.project');
-            projects.forEach(project => {
-                const header = project.querySelector('.project-header');
-                const description = project.querySelector('.description');
+            }
 
-                header.addEventListener('click', () => {
-                    project.classList.toggle('active');
-                    if (project.classList.contains('active')) {
-                        description.style.maxHeight = description.scrollHeight + 'px';
-                    } else {
-                        description.style.maxHeight = '0';
-                    }
-                });
-            });
-
-            // jobs
-            const jobs = document.querySelectorAll('.job');
-            jobs.forEach(job => {
-                const header = job.querySelector('.job-header');
-                const description = job.querySelector('.description');
-
-                header.addEventListener('click', () => {
-                    job.classList.toggle('active');
-                    if (job.classList.contains('active')) {
-                        description.style.maxHeight = description.scrollHeight + 'px';
-                    } else {
-                        description.style.maxHeight = '0';
-                    }
-                });
-            });
+            wireToggle('.campus-activity', '.campus-header');
+            wireToggle('.project', '.project-header');
+            wireToggle('.job', '.job-header');
         });
     </script>
 
